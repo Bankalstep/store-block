@@ -1,0 +1,6 @@
+{
+  "admin.app.example": {
+    "component": "Admin",
+    "path": "/admin/app/netreviews"
+  }
+}

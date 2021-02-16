@@ -1,0 +1,58 @@
+type Query {
+    account: NetreviewsAccount
+    average(locale: String): [NetreviewsRating]
+    reviews(idWebsite: String, plateforme: String, offset: Int, limit: Int): [NetreviewsReviews]
+}
+
+type NetreviewsAccount {
+    idWebsite: String
+    secretKey: String
+    plateforme: String
+}
+
+type NetreviewsRating {
+    count: Int
+    rate: Float
+}
+
+type Average {
+    count: Int
+    rate: Float
+}
+
+type NetreviewsReviews {
+    reviews: [Review]
+    stats: [Int]
+}
+
+type Review {
+    rate: Float,
+    email: String
+    info1: String
+    info2: String
+    info3: String
+    info4: String
+    info5: String
+    info6: String
+    info7: String
+    info8: String
+    info9: String
+    info10: String
+    url_image_product: String
+    description: String
+    medias: String
+    publish_date: String
+    count_helpful_yes: String
+    count_helpful_no: String
+    brand_name: String
+    sign_helpful: String
+    id_review: String
+    id_review_product: String
+    order_ref: String
+    id_product: String
+    review_date: String
+    review: String
+    lastname: String
+    firstname: String
+    order_date: String
+}

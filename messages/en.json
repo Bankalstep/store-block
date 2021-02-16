@@ -1,4 +1,9 @@
 {
-  "editor.countdown.title": "Countdown",
-  "editor.countdown.description": "Countdown component"
+  "admin.navigation.label-group": "Netreviews",
+  "admin.navigation.label-details": "Example details",
+  "admin.navigation.search.kws": "test, mock, fake",
+  "admin.navigation.details.search.kws": "details, mock, test, hello",
+  "admin.navigation.table.search.kws": "table, mock, test, bye",
+  "admin.hello-world": "Example Admin",
+  "netreviews.module.conf": "Netreviews module configuration"
 }

@@ -1,4 +1,8 @@
 {
-  "editor.countdown.title": "Contagem regressiva",
-  "editor.countdown.description": "Componente de contagem regressiva"
+  "admin.navigation.label-group": "Netreviews",
+  "admin.navigation.label-details": "Example details",
+  "admin.navigation.search.kws": "test, mock, fake",
+  "admin.navigation.details.search.kws": "details, mock, test, hello",
+  "admin.navigation.table.search.kws": "table, mock, test, bye",
+  "admin.hello-world": "Example Admin"
 }
