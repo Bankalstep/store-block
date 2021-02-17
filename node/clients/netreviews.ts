@@ -18,19 +18,22 @@ class Netreviews extends ExternalClient {
     }
 
     public async getAccountInfo(ctx: Context) {
-        const obj: any = await netreviewsAccount(ctx);
-        const {idWebsite, plateforme}: Account = obj.data[0];
+        if (this.idWebsite === '') {
+            const data: any = await netreviewsAccount(ctx);
+            console.log(data);
+            const {idWebsite, plateforme}: Account = data[0];
 
-        this.idWebsite = idWebsite;
-        this.plateforme = plateforme;
+            this.idWebsite = idWebsite;
+            this.plateforme = plateforme;
+        }
     }
 
-    public async getRating(): Promise<Rating> {
-        // await this.getAccountInfo(ctx);
+    public async getRating(ctx: Context): Promise<Rating> {
+        await this.getAccountInfo(ctx);
 
         return this.http.post('/product', {
                 query: 'average',
-                idWebsite: "6a826e37-7cb5-4e6a-8523-78b0a57aa45f",
+                idWebsite: this.idWebsite,
                 plateforme: "fr",
                 product: '30'
             }
@@ -38,12 +41,12 @@ class Netreviews extends ExternalClient {
     }
 
     // public async getReviews(ctx: Context, {offset, limit}: reviewArgs): Promise<Reviews> {
-    public async getReviews({offset, limit}: reviewArgs): Promise<Reviews> {
-        // await this.getAccountInfo(ctx);
+    public async getReviews(ctx: Context, {offset, limit}: reviewArgs): Promise<Reviews> {
+        await this.getAccountInfo(ctx);
 
         return this.http.post('/product', {
                 query: 'reviews',
-                idWebsite: "6a826e37-7cb5-4e6a-8523-78b0a57aa45f",
+                idWebsite: this.idWebsite,
                 plateforme: 'fr',
                 product: '30',
                 offset: offset,

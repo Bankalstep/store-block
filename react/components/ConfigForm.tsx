@@ -59,7 +59,6 @@ class ConfigForm extends React.Component<{ locale: string }, IState> {
      */
     deleteAccountInfo(data: Array<any>) {
         data.forEach(function (element) {
-            console.log(element);
 
             axios({
                 method: 'delete',
@@ -70,7 +69,6 @@ class ConfigForm extends React.Component<{ locale: string }, IState> {
                 }
             })
                 .then(function (response: AxiosResponse<any>) {
-                    // console.log(response);
                     return response;
                 })
                 .catch(function (error: AxiosError<any>) {
@@ -83,8 +81,6 @@ class ConfigForm extends React.Component<{ locale: string }, IState> {
         console.log('mounted');
         try {
             const checkInfo = await this.getAccountInfo();
-            // .then(data => {
-            console.log(checkInfo);
 
             if (Object.keys(checkInfo).length !== 0) {
                 const documentId = checkInfo[Object.keys(checkInfo)[0]];
@@ -93,30 +89,26 @@ class ConfigForm extends React.Component<{ locale: string }, IState> {
                     headers: {'Content-Type': 'application/json', Accept: 'application/vnd.vtex.ds.v10+json'}
                 };
 
-                fetch('/api/dataentities/netreviews/documents/' + documentId.id + '?_fields=_all',
-                    options
-                )
-                    .then((data: Response) => {
-                            data.json().then((data) => {
-                                console.log(data);
-                                this.setState({
-                                    idWebsite: data.idWebsite,
-                                    secretKey: data.secretKey
-                                });
-                            })
-                        },
-                        (error) => {
-                            console.log(error);
-                        }
+                try {
+                    const response = await fetch('/api/dataentities/netreviews/documents/' + documentId.id + '?_fields=_all',
+                        options
                     )
+                    const data = await response.json();
+
+                    this.setState({
+                        idWebsite: data.idWebsite,
+                        secretKey: data.secretKey
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
             }
         } catch (error) {
             console.log(error);
         }
-        // .catch(e => console.log(e));
     }
 
-    saveInfo(action: string, id?: string) {
+    async saveInfo(action: string, id?: string) {
         const url = id ? "/api/dataentities/netreviews/documents/" + id + "" : "/api/dataentities/netreviews/documents/";
         const body = {
             "idWebsite": this.state.idWebsite,
@@ -129,40 +121,32 @@ class ConfigForm extends React.Component<{ locale: string }, IState> {
             body: JSON.stringify(body)
         };
 
-        fetch(url, options)
-            .then(
-                (data: Response) => {
-                    console.log(data);
-                    // data.json().then(function (data) {
-                    //     console.log(data);
-                    // })
-                },
-                (error) => {
-                    console.log(error.response);
-                }
-            )
+        try {
+            const response = await fetch(url, options);
+            console.log(response);
+            return;
+        } catch (error) {
+            console.log(error);
+        }
     }
 
-    handleSubmit(event: FormEvent) {
-        let action = 'POST';
-
-        const checkInfo = this.getAccountInfo()
-            .then(data => {
-                if (Object.keys(data).length !== 0) {
-                    const documentId = data[Object.keys(data)[0]];
-                    console.log('action PUT');
-                    action = 'PUT';
-                    this.saveInfo(action, documentId.id);
-                    return;
-                }
-                console.log('action POST');
-
-                this.saveInfo(action);
-
-                return;
-            });
-
+    async handleSubmit(event: FormEvent) {
         event.preventDefault();
+
+        try {
+            const checkInfo = await this.getAccountInfo()
+            if (Object.keys(checkInfo).length !== 0) {
+                const documentId = checkInfo[Object.keys(checkInfo)[0]];
+                console.log('action PUT');
+                await this.saveInfo('put', documentId.id);
+                return;
+            }
+            console.log('action POST');
+            await this.saveInfo('post');
+            return;
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     render() {
