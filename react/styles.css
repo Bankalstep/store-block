@@ -1,0 +1,48 @@
+.netreviews_review_rate_and_stars {
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.inactive_container {
+    display: flex;
+    position: absolute;
+}
+
+.active_container {
+    display: flex;
+    position: relative;
+}
+
+.stars_overflow {
+    overflow: hidden;
+}
+
+.loader {
+    display: inline-block;
+}
+
+.loader:after {
+    content: " ";
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 4px solid;
+    border-color: #ddd #eee #eee #eee;
+    animation: loader 1.2s linear infinite;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.nik {
+    color: #e7a81b;
+}

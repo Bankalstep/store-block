@@ -1,6 +1,6 @@
 {
   "netreviews-rating": {
-    "component": "Rating"
+    "component": "Stars"
   },
   "netreviews-reviews": {
     "component": "Reviews"

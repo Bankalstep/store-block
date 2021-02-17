@@ -10,6 +10,7 @@ export const queries = {
         // const appId = process.env.VTEX_APP_ID;
         try {
             const data = await netreviews.getRating(ctx);
+            console.log(data);
             return data[Object.keys(data)[0]];
         } catch (error) {
             console.log(error);

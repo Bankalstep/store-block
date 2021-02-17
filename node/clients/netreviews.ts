@@ -20,7 +20,6 @@ class Netreviews extends ExternalClient {
     public async getAccountInfo(ctx: Context) {
         if (this.idWebsite === '') {
             const data: any = await netreviewsAccount(ctx);
-            console.log(data);
             const {idWebsite, plateforme}: Account = data[0];
 
             this.idWebsite = idWebsite;
@@ -40,7 +39,6 @@ class Netreviews extends ExternalClient {
         )
     }
 
-    // public async getReviews(ctx: Context, {offset, limit}: reviewArgs): Promise<Reviews> {
     public async getReviews(ctx: Context, {offset, limit}: reviewArgs): Promise<Reviews> {
         await this.getAccountInfo(ctx);
 
