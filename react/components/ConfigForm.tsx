@@ -1,5 +1,5 @@
 import React, {FormEvent} from "react";
-import axios, {AxiosError, AxiosRequestConfig, AxiosResponse} from "axios";
+import axios, {AxiosError, AxiosResponse} from "axios";
 
 interface IState {
     [key: string]: string;

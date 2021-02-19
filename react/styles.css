@@ -1,4 +1,5 @@
 .netreviews_review_rate_and_stars {
+    font-family: Roboto, sans-serif;
     display: flex;
     padding: 0;
     margin: 0;
@@ -18,6 +19,32 @@
     overflow: hidden;
 }
 
+.inline_stars {
+
+}
+
+.reviews_list {
+
+}
+
+.netreviews_review {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+}
+
+.netreviews_stars_rate {
+    display: flex;
+    align-items: center;
+}
+
+.inline_rating {
+    margin-left: 5px;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+/*loader*/
 .loader {
     display: inline-block;
 }
