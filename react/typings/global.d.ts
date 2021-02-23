@@ -2,10 +2,6 @@ export interface StarsProps {
     rating: number
 }
 
-export interface StarsStatsProps {
-    count: number
-}
-
 export interface RatingProps {
     count: number
 }

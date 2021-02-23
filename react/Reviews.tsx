@@ -27,7 +27,7 @@ const Reviews: FunctionComponent = () => {
 
     if (!loadingReviews && !errorReviews && dataReviews && !loadingRating && !errorRating && dataRating) {
         const reviews = !loadingReviews && !errorReviews && dataReviews ? dataReviews.reviews[0] : null;
-        const stats = reviews.stats.reverse();
+        const stats = reviews.stats;
         const rating = !loadingRating && !errorRating && dataRating ? dataRating.rating[0] : null;
 
         function getTotal() {
