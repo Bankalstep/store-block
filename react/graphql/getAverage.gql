@@ -1,5 +1,5 @@
 query GetAverage {
-    average {
+    rating {
         count
         rate
     }

@@ -22,8 +22,8 @@ const StarsContainer: FunctionComponent<StarsProps> = ({rating}) => {
                 {stars.map((j) => {
                     return (
                         <div key={j}>
-                            <div className={''}>
-                                <Star fill="#A3A4A6" className="nik" width={16} height={15}/>
+                            <div>
+                                <Star fill="#A3A4A6" width={16} height={15}/>
                             </div>
                         </div>
                     )
@@ -35,7 +35,7 @@ const StarsContainer: FunctionComponent<StarsProps> = ({rating}) => {
                         <div key={i}>
                             <div className={`${styles.stars_overflow}`}
                                  style={{width: getPercentage(rating, i)}}>
-                                <Star fill="#F49630" className={""} width={16} height={15}/>
+                                <Star fill="#F49630" width={16} height={15}/>
                             </div>
                         </div>
                     )

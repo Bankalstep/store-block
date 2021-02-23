@@ -2,16 +2,27 @@ export interface StarsProps {
     rating: number
 }
 
+export interface StarsStatsProps {
+    count: number
+}
+
 export interface RatingProps {
     count: number
 }
 
 export interface ReviewsContainerProps {
-    // rate: number
     reviews: ReviewProps[]
-    // filter: string
-    // recommandation: number
-    // stats: [number]
+}
+
+export interface SideInfoProps {
+    rating: {
+        rate: number
+        count: number
+    }
+    total: number
+    filter: string
+    recommandation: number
+    stats: number[]
 }
 
 export interface ReviewProps {

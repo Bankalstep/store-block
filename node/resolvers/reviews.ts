@@ -5,7 +5,7 @@ declare var process: {
 }
 
 export const queries = {
-    average: async (_: any, _args: any, ctx: Context, _infos: any) => {
+    rating: async (_: any, _args: any, ctx: Context, _infos: any) => {
         const {clients: {netreviews}} = ctx;
         // const appId = process.env.VTEX_APP_ID;
         try {

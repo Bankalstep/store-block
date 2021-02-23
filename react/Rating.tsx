@@ -1,12 +1,12 @@
-import React, {FC, Fragment} from 'react'
+import React, {FC, Fragment, FunctionComponent} from 'react'
 import {useQuery} from 'react-apollo';
 import GetAverage from './graphql/getAverage.gql';
 import styles from "./styles.css";
-import "@fontsource/roboto";
+import "@fontsource/nunito";
 import StarsContainer from "./components/StarsContainer";
 import RatingInfo from "./components/RatingInfo";
 
-const Rating: FC = () => {
+const Rating: FunctionComponent = () => {
     const {data, loading, error} = useQuery(GetAverage, {
         ssr: false
     });
@@ -15,13 +15,19 @@ const Rating: FC = () => {
         return <div className={`${styles.loader}`}/>;
     }
 
-    const rate = !loading && !error && data ? data.average[0].rate : null;
-    const count = !loading && !error && data ? data.average[0].count : null;
+    if (!loading && !error && data) {
+        const count = data.rating[0].count;
+        const rate = data.rating[0].rate;
 
+        return (
+            <div className={`${styles.netreviews_review_rate_and_stars}`}>
+                <StarsContainer rating={rate}/><RatingInfo count={count}/>
+            </div>
+        )
+    }
     return (
-        <div className={`${styles.netreviews_review_rate_and_stars}`}>
-            <StarsContainer rating={rate}/><RatingInfo count={count}/>
-        </div>
-    )
+        <div></div>
+    );
+
 }
 export default Rating;

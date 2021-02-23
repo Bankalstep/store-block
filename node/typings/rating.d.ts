@@ -4,11 +4,3 @@ export interface Rating {
         rate: number
     };
 }
-// export interface Rating {
-//     average: Average[];
-// }
-//
-// export interface Average {
-//     count: string;
-//     rate: string;
-// }

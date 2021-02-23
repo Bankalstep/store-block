@@ -1,11 +1,8 @@
 import React, {FunctionComponent} from 'react'
 
-const Star: FunctionComponent<StarProps> = ({fill, className, width, height}) => {
+const Star: FunctionComponent<StarProps> = ({fill, width, height}) => {
     return (
-        <svg className={className} width={width} height={height} fill={fill} viewBox="0 0 16 15" version="1.1">
-
-            <title>Icons/ion-ios-star Copy 2</title>
-            <desc>Created with Sketch.</desc>
+        <svg width={width} height={height} fill={fill} viewBox="0 0 16 15" version="1.1">
             <g id="Desktop" stroke="none">
                 <g id="mmvp" transform="translate(-427.000000, -426.000000)">
                     <g id="" transform="translate(352.000000, 416.000000)">
@@ -27,7 +24,6 @@ const Star: FunctionComponent<StarProps> = ({fill, className, width, height}) =>
 
 interface StarProps {
     fill: string
-    className: string
     width: number
     height: number
 }

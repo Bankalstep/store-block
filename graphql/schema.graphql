@@ -1,6 +1,6 @@
 type Query {
     account: NetreviewsAccount
-    average(locale: String): [NetreviewsRating]
+    rating(locale: String): [NetreviewsRating]
     reviews(idWebsite: String, plateforme: String, offset: Int, limit: Int): [NetreviewsReviews]
 }
 

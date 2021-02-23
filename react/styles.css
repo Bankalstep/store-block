@@ -1,8 +1,8 @@
 .netreviews_review_rate_and_stars {
-    font-family: Roboto, sans-serif;
+    font-family: Nunito, Roboto, sans-serif;
     display: flex;
     padding: 0;
-    margin: 0;
+    margin: 0 50px;
 }
 
 .inactive_container {
@@ -23,8 +23,139 @@
 
 }
 
-.reviews_list {
+.left_block {
+    flex: 0 1 200px;
+    text-align: center;
+}
 
+.right_block {
+    margin-left: 20px;
+}
+
+.netreviews_logo {
+    width: 200px;
+    min-height: 50px;
+}
+
+.top_block {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    color: #5A5A58;
+}
+
+.separator {
+    font-size: 26px;
+}
+
+.extra_margin {
+    margin: 0 8px 0 5px;
+}
+
+.inline_percentage {
+    display: flex;
+    font-weight: 700;
+    color: #2c2c2c;
+    font-size: 13px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+.individual_stats_stars {
+    cursor: pointer;
+    margin-top: 20px;
+    line-height: 10px;
+}
+
+.active_stars {
+    margin-right: 2px;
+}
+
+.stats {}
+
+.netreviews_percentage_bar {
+    height: 5px;
+    border-radius: 7px;
+    width: 100%;
+}
+
+.user_count {
+    display: flex;
+    justify-content: center;
+}
+
+.netreviews_afnor {
+    margin-top: 25px;
+    text-align: center;
+    line-height: 16px;
+}
+
+.netreviews_certification {
+    color: #7b858f;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color .2s;
+    font-weight: 700;
+}
+
+#netreviews_informations_label {
+    display: inline-block;
+    color: #7b858f;
+    text-decoration: none;
+    font-size: 11px;
+    transition: color .2s;
+    cursor: pointer;
+}
+
+#netreviews_informations{
+    text-align: left;
+    /*display: none;*/
+    height: auto;
+    width: 450px;
+    background-color: #f4f4f4;
+    color: #000;
+    padding: 10px 10px 20px;
+    position: absolute;
+    border-radius: 3px;
+    /*box-shadow: 0 1px 3px rgb(0 0 0 / 40%);*/
+    z-index: 11;
+    margin: 0;
+    font-family: Nunito, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    bottom: 0;
+}
+
+.rating_block {
+    display: flex;
+    flex: 1 0 90px;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 30px;
+    color: #333333;
+}
+
+.rating {
+    font-size: 58px;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.bottom_margin {
+    margin-bottom: 15px;
+}
+
+.stats_block {
+    /*min-height: 412px;*/
+    background-color: #f2f2f2;
+    display: block;
+    padding: 20px;
+}
+
+.reviews_list {
+    flex: 1 0 76%;
 }
 
 .netreviews_review {
