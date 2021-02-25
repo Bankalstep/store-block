@@ -5,5 +5,9 @@
   "admin.navigation.details.search.kws": "details, mock, test, hello",
   "admin.navigation.table.search.kws": "table, mock, test, bye",
   "admin.hello-world": "Example Admin",
-  "netreviews.module.conf": "Netreviews module configuration"
+  "netreviews.module.conf": "Netreviews module configuration",
+  "moderation.answer-from": "Answer from ",
+  "yes": "Yes",
+  "no": "No",
+  "load-more": "Load more reviews"
 }

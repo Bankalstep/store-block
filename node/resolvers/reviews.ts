@@ -19,10 +19,13 @@ export const queries = {
     },
     reviews: async (_: any, args: any, ctx: Context, _infos: any) => {
         const {clients: {netreviews}} = ctx;
-        const {offset, limit} = args;
+        const {offset, limit, filter, order} = args;
 
+        console.log(args);
         try {
-            return await netreviews.getReviews(ctx, {offset, limit});
+            const data = await netreviews.getReviews(ctx, {offset, limit, filter, order});
+            // console.log(data);
+            return data;
         } catch (error) {
             throw new TypeError(error);
         }

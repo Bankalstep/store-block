@@ -1,5 +1,5 @@
-query GetReviews($idWebsite: String, $plateforme: String, $offset: Int, $limit: Int) {
-    reviews(idWebsite: $idWebsite, plateforme: $plateforme, offset: $offset, limit: $limit)  {
+query GetReviews($idWebsite: String, $plateforme: String, $offset: Int, $limit: Int, $filter: [Int], $order: String) {
+    reviews(idWebsite: $idWebsite, plateforme: $plateforme, offset: $offset, limit: $limit, filter: $filter, order: $order)  {
         reviews {
             rate
             email
@@ -15,6 +15,11 @@ query GetReviews($idWebsite: String, $plateforme: String, $offset: Int, $limit: 
             info10
             url_image_product
             description
+            moderation {
+                comment_date
+                comment_origin
+                comment
+            }
             medias
             publish_date
             count_helpful_yes

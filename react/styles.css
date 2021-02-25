@@ -24,12 +24,14 @@
 }
 
 .left_block {
-    flex: 0 1 200px;
+    flex: 0 1 21%;
     text-align: center;
 }
 
 .right_block {
+    flex: 0 1 100%;
     margin-left: 20px;
+    margin-top: 50px;
 }
 
 .netreviews_logo {
@@ -46,6 +48,7 @@
 
 .separator {
     font-size: 26px;
+    margin: 0 10px;
 }
 
 .extra_margin {
@@ -111,9 +114,8 @@
     cursor: pointer;
 }
 
-#netreviews_informations{
+#netreviews_informations {
     text-align: left;
-    /*display: none;*/
     height: auto;
     width: 450px;
     background-color: #f4f4f4;
@@ -132,7 +134,7 @@
 .rating_block {
     display: flex;
     flex: 1 0 90px;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     font-size: 30px;
     color: #333333;
@@ -165,6 +167,93 @@
     display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
+    width: 100%;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f2f2f2;
+    padding-bottom: 6px;
+}
+
+.customer_review {
+    font-size: 14px;
+    line-height: 22px;
+    width: 100%;
+    padding: 0;
+    margin-top: 2px;
+    margin-bottom: 0;
+    text-align: left;
+    color: #2c2c2c;
+    font-weight: 700;
+}
+
+.netreviews_customer_name {
+    display: inline-block;
+    font-size: 12px;
+    text-align: left;
+    padding: 0;
+    margin: 0 0 10px 0;
+    color: #2c2c2c;
+    font-family: Nunito, Arial, Helvetica, sans-serif;
+}
+
+.netreviews_discussion {
+    margin-left: 15px;
+}
+
+.netreviews_website_answer {
+    margin-bottom: 5px;
+    padding: 10px 10px 10px 10px;
+    background-color: #f4f4f4;
+    width: 75%;
+    display: block;
+    font-size: 12px;
+    border-left: #f2f2f2 solid 3px;
+    height: auto;
+}
+
+.netreviews_answer_title {
+    font-weight: 600;
+}
+
+.helpful_block {
+    padding: 0;
+    margin: 10px 0;
+    color: #868788;
+    font-size: 12px;
+}
+
+.button_helpful {
+    background: #dedede;
+    padding: 0 0 0 5px;
+    margin: 0 0 0 5px;
+    color: #4e4e4e;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.helpful_block a, .helpful_block a span {
+    display: inline-block;
+    line-height: 22px;
+    height: 22px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background-color, color .2s;
+}
+
+.helpful_block a span {
+    background: #adadad;
+    padding: 0 5px;
+    margin: 0 0 0 3px;
+    color: #fff;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.netreviews_rate {
+    margin-left: 10px;
+    line-height: 33px;
+    font-weight: bold;
+    font-size: 15px;
 }
 
 .netreviews_stars_rate {

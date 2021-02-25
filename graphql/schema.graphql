@@ -1,7 +1,7 @@
 type Query {
     account: NetreviewsAccount
     rating(locale: String): [NetreviewsRating]
-    reviews(idWebsite: String, plateforme: String, offset: Int, limit: Int): [NetreviewsReviews]
+    reviews(idWebsite: String, plateforme: String, offset: Int, limit: Int, filter: [Int], order: String): [NetreviewsReviews]
 }
 
 type NetreviewsAccount {
@@ -40,6 +40,7 @@ type Review {
     info10: String
     url_image_product: String
     description: String
+    moderation: [Moderation]
     medias: String
     publish_date: String
     count_helpful_yes: String
@@ -55,4 +56,10 @@ type Review {
     lastname: String
     firstname: String
     order_date: String
+}
+
+type Moderation {
+    comment_date: String
+    comment_origin: String
+    comment: String
 }

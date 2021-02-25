@@ -1,4 +1,8 @@
 {
   "admin.navigation.label": "Example admin",
-  "appframe.navigation.example": "zegfzrgzrg"
+  "appframe.navigation.example": "zegfzrgzrg",
+  "moderation.answer-from": "Réponse de ",
+  "yes": "Oui",
+  "no": "Non",
+  "load-more": "Load more reviews"
 }

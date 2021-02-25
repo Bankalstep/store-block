@@ -16,7 +16,6 @@ export interface SideInfoProps {
         count: number
     }
     total: number
-    filter: string
     recommandation: number
     stats: number[]
 }
@@ -26,11 +25,12 @@ export interface ReviewProps {
     firstname: string
     lastname: string
     review: string
-    reviewId?: string
+    review_id: string
     brand_name: string
     count_helpful_no: number
     count_helpful_yes: number
     description: string
+    moderation: ModerationContainer
     email: string
     id_product: number
     id_review: string
@@ -45,7 +45,7 @@ export interface ReviewProps {
     info8?: string
     info9?: string
     info10?: string
-    medias: string
+    medias: [string]
     order_date: string
     order_ref: string
     publish_date: string
@@ -53,3 +53,5 @@ export interface ReviewProps {
     sign_helpful: string
     url_image_product: string
 }
+
+

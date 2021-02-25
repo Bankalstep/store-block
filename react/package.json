@@ -4,6 +4,7 @@
     "lint": "tsc --noEmit && eslint --ext ts,tsx ."
   },
   "dependencies": {
+    "@fingerprintjs/fingerprintjs": "^3.0.6",
     "@fontsource/nunito": "^4.2.1",
     "@fontsource/roboto": "^4.2.1",
     "@vtex/css-handles": "^1.0.0",

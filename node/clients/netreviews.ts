@@ -6,7 +6,9 @@ import {Account} from "../typings/account";
 
 interface reviewArgs {
     offset: number,
-    limit: number
+    limit: number,
+    filter: [number],
+    order: string
 }
 
 class Netreviews extends ExternalClient {
@@ -39,7 +41,7 @@ class Netreviews extends ExternalClient {
         )
     }
 
-    public async getReviews(ctx: Context, {offset, limit}: reviewArgs): Promise<Reviews> {
+    public async getReviews(ctx: Context, {offset, limit, filter, order}: reviewArgs): Promise<Reviews> {
         await this.getAccountInfo(ctx);
 
         return this.http.post('/product', {
@@ -49,6 +51,8 @@ class Netreviews extends ExternalClient {
                 product: '30',
                 offset: offset,
                 limit: limit,
+                filter: filter,
+                order: order
             }
         )
     }

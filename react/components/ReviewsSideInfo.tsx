@@ -3,7 +3,9 @@ import {SideInfoProps} from "../typings/global";
 import styles from "../styles.css";
 import {FaInfoCircle, FaUserAlt} from "react-icons/fa";
 import StarsStatsContainer from "./StarsStatsContainer";
-import NetreviewsInfo from "./netreviewsInfo";
+import NetreviewsInfo from "./NetreviewsInfo";
+import {useQuery} from "react-apollo";
+import GetAverage from "../graphql/getAverage.gql";
 
 const background = (percentage: any): any => {
     return {
@@ -13,7 +15,14 @@ const background = (percentage: any): any => {
 
 const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({rating, stats, total, recommandation}) => {
     const [showInfo, setshowInfo] = useState(false)
-    const displayInfo = () => setshowInfo(!showInfo)
+    const toggleInfo = () => setshowInfo(!showInfo)
+    const {data: dataRating, loading: loadingRating, error: errorRating} = useQuery(GetAverage, {
+        ssr: false
+    });
+
+    if (loadingRating) {
+        return <div className={`${styles.loader}`}/>;
+    }
 
     return (
         <div>
@@ -35,11 +44,10 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({rating, stats, total
 
                 </div>
             </div>
-            <div onClick={displayInfo}> click</div>
 
             <div className={`${styles.stats}`}>
                 {stats.map((element, index, _array) => {
-                        const percent = element / total * 100;
+                        const percent = Math.round(element / total * 100);
 
                         return (
                             <div className={`${styles.individual_stats_stars}`} key={index}>
@@ -59,12 +67,12 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({rating, stats, total
                 <a className={`${styles.netreviews_certification}`} target="_blank" href="">Afficher le certificat de
                     confiance</a>
                 <label id={`${styles.netreviews_informations_label}`}>
-                    <span>Avis soumis à un contrôle</span>
+                    <span className={`${styles.extra_margin}`} onClick={toggleInfo}>Avis soumis à un contrôle </span>
                     <FaInfoCircle/>
                 </label>
             </div>
 
-            {showInfo ? <div><NetreviewsInfo/></div> : null}
+            {showInfo ? <div><NetreviewsInfo onClick={toggleInfo} /></div> : null}
 
         </div>
     )

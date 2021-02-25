@@ -1,12 +1,15 @@
-import React, {Component, FunctionComponent} from "react";
-import {RatingProps} from "../typings/global";
+import React, {EventHandler, FunctionComponent, MouseEventHandler, SyntheticEvent, useState} from "react";
 import styles from "../styles.css";
 import {FaRegWindowClose} from "react-icons/fa";
 
-const NetreviewsInfo: FunctionComponent = () => {
+interface TState {
+    onClick: MouseEventHandler
+}
+
+const NetreviewsInfo: FunctionComponent<TState> = ({onClick}) => {
     return (
         <div id={`${styles.netreviews_informations}`}>
-            <FaRegWindowClose/>
+            <span onClick={onClick}><FaRegWindowClose/></span>
             <ul>
                 <li>Pour plus d'informations sur les caractéristiques du contrôle des
                     avis et la possibilité de contacter l'auteur de l'avis, merci de
