@@ -16,9 +16,15 @@ interface Moderation {
 
 
 const ModerationContainerBlock: FunctionComponent<ModerationContainer> = ({moderation, commentUsername}) => {
+    const chat = moderation.slice().reverse();
+
+    function toggleChat(){
+
+    }
+
     return (
         <Fragment>
-            {moderation.map((element, i) => {
+            {chat.map((element, i) => {
                 return <ModerationBlock comment_date={element.comment_date}
                                         comment={element.comment}
                                         comment_origin={element.comment_origin}

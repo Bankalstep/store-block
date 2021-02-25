@@ -1,3 +1,5 @@
+import {MouseEventHandler} from "react";
+
 export interface StarsProps {
     rating: number
 }
@@ -8,13 +10,14 @@ export interface RatingProps {
 
 export interface ReviewsContainerProps {
     reviews: ReviewProps[]
+    parentCallback: updateVariables
+}
+
+interface updateVariables {
+    (offset: number, limit: number): void;
 }
 
 export interface SideInfoProps {
-    rating: {
-        rate: number
-        count: number
-    }
     total: number
     recommandation: number
     stats: number[]
@@ -45,7 +48,7 @@ export interface ReviewProps {
     info8?: string
     info9?: string
     info10?: string
-    medias: [string]
+    medias: string
     order_date: string
     order_ref: string
     publish_date: string
