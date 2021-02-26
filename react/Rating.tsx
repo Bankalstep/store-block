@@ -20,7 +20,7 @@ const Rating: FunctionComponent = () => {
         const rate = data.rating[0].rate;
 
         return (
-            <div className={`${styles.netreviews_review_rate_and_stars}`}>
+            <div className={`${styles.netreviews_review_stars}`}>
                 <StarsContainer rating={rate}/><RatingInfo count={count}/>
             </div>
         )

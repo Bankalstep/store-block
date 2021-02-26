@@ -8,6 +8,7 @@ import nrDateFormat from "../utils/DateConverter"
 import MediaContainer from "./MediaContainer";
 
 const Review: FunctionComponent<ReviewProps> = ({...reviewsProps}) => {
+    const mediaArray = reviewsProps.medias ? JSON.parse(decodeURIComponent(atob(reviewsProps.medias))) : null;
 
     return (
         <div className={`${styles.netreviews_review}`}>
@@ -18,7 +19,7 @@ const Review: FunctionComponent<ReviewProps> = ({...reviewsProps}) => {
             </div>
             <div className={`${styles.customer_review}`}>{reviewsProps.review}</div>
 
-            <MediaContainer medias={reviewsProps.medias}/>
+            {reviewsProps.medias ? <MediaContainer medias={[mediaArray]}/> : 'lol'}
 
             <div className={`${styles.netreviews_customer_name}`}>{reviewsProps.firstname} {reviewsProps.lastname}.
                 <span> publié le {nrDateFormat(reviewsProps.publish_date.substr(0, 10))}</span>

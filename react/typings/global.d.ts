@@ -18,9 +18,6 @@ interface updateVariables {
 }
 
 export interface SideInfoProps {
-    total: number
-    recommandation: number
-    stats: number[]
 }
 
 export interface ReviewProps {

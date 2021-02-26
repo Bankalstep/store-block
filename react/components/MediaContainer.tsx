@@ -1,15 +1,60 @@
-import React, {FunctionComponent} from "react";
+import React, {FunctionComponent, useEffect, useState} from "react";
+import styles from "../styles.css";
+import Carousel from "./Carousel";
 
 export interface MediaContainer {
-    medias: String
+    medias: Media[]
+}
+
+export interface Media {
+    large: string
+    medium: string
+    small: string,
+    type: string
 }
 
 const MediaContainer: FunctionComponent<MediaContainer> = ({medias}) => {
+    const [{display, elemUrl}, setState] = useState({display: false, elemUrl: ''});
+    const toggleState = (elemUrl: string) => {
+        setState({display: !display, elemUrl: elemUrl})
+        console.log(display);
+        console.log(elemUrl);
+    }
+
+    useEffect(() => {
+        console.log(display);
+        console.log('action going in media container with display');
+        // if (display) {
+        //     return;
+        // }
+    }, [display]);
+    //
+    // useEffect(() => {
+    //     console.log('action going in media container');
+    // });
+
+    const backgroundImage = (url: string): any => {
+        return {
+            backgroundImage: "url(" + url + ")"
+        };
+    };
+
+    const mediaList = medias.map((element: any, i: number) =>
+        <li key={i}><a
+            onClick={() => {
+                toggleState(element[0].large)
+            }}
+            datatype='image' className={`${styles.netreviews_image_thumb}`}
+            data-src={element[0].small} style={backgroundImage(element[0].small)}
+        /></li>
+    )
+
     return (
         <div>
-            {
-                medias ? medias : undefined
-            }
+            <ul className={`${styles.netreviews_media_part}`}>
+                {mediaList}
+            </ul>
+            {display ? <div><Carousel onClick={[toggleState, elemUrl]}/></div> : 'yo'}
         </div>
     );
 }

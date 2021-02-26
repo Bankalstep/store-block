@@ -6,6 +6,9 @@ import StarsStatsContainer from "./StarsStatsContainer";
 import NetreviewsInfo from "./NetreviewsInfo";
 import {useQuery} from "react-apollo";
 import GetAverage from "../graphql/getAverage.gql";
+import GetReviews from "../graphql/getReviews.gql";
+import getRecommandation from "../utils/RecommandationPercentage";
+
 
 const background = (percentage: any): any => {
     return {
@@ -13,10 +16,13 @@ const background = (percentage: any): any => {
     };
 };
 
-const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({stats, total, recommandation}) => {
+const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({}) => {
     const [showInfo, setshowInfo] = useState(false);
     const toggleInfo = () => setshowInfo(!showInfo);
     const {data: dataRating, loading: loadingRating, error: errorRating} = useQuery(GetAverage, {
+        ssr: false
+    });
+    const {data: dataReviews, loading: loadingReviews, error: errorReviews} = useQuery(GetReviews, {
         ssr: false
     });
 
@@ -24,12 +30,18 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({stats, total, recomm
         console.log(target + 1);
     }
 
-    if (loadingRating) {
+    if (loadingRating && loadingReviews) {
+    // if (loadingRating) {
         return <div className={`${styles.loader}`}/>;
     }
 
-    if (!loadingRating && !errorRating && dataRating) {
+    if (!loadingRating && !errorRating && dataRating && !loadingReviews && dataReviews) {
+    // if (!loadingRating && !errorRating && dataRating) {
         const rating = !loadingRating && !errorRating && dataRating ? dataRating.rating[0] : null;
+        const reviews = !loadingReviews && !errorReviews && dataReviews ? dataReviews.reviews[0] : null;
+        const stats: number[] = reviews.stats;
+        const total = getRecommandation(stats).total;
+        const recommandation = getRecommandation(stats).percentageRecommandation;
 
         return (
             <div className={`${styles.left_block}`}>
@@ -98,4 +110,4 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({stats, total, recomm
     return <div></div>
 }
 
-export default ReviewsSideInfo
+export default React.memo(ReviewsSideInfo);

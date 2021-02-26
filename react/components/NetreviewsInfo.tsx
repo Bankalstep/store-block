@@ -1,6 +1,6 @@
 import React, {EventHandler, FunctionComponent, MouseEventHandler, SyntheticEvent, useState} from "react";
 import styles from "../styles.css";
-import {FaRegWindowClose} from "react-icons/fa";
+import {CgCloseO} from "react-icons/all";
 
 interface TState {
     onClick: MouseEventHandler
@@ -9,7 +9,7 @@ interface TState {
 const NetreviewsInfo: FunctionComponent<TState> = ({onClick}) => {
     return (
         <div id={`${styles.netreviews_informations}`}>
-            <span onClick={onClick}><FaRegWindowClose/></span>
+            <span className={`${styles.close_info}`} onClick={onClick}><CgCloseO/></span>
             <ul>
                 <li>Pour plus d'informations sur les caractéristiques du contrôle des
                     avis et la possibilité de contacter l'auteur de l'avis, merci de
