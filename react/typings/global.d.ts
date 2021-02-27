@@ -10,11 +10,12 @@ export interface RatingProps {
 
 export interface ReviewsContainerProps {
     reviews: ReviewProps[]
-    parentCallback: updateVariables
+    parentCallback: updateVariables,
+    limit: number
 }
 
 interface updateVariables {
-    (offset: number, limit: number): void;
+    (limit: number): void;
 }
 
 export interface SideInfoProps {

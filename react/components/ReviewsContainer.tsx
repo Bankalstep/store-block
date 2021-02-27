@@ -3,18 +3,18 @@ import styles from '../styles.css';
 import {ReviewsContainerProps, ReviewProps} from '../typings/global';
 import Review from "./Review";
 import {FormattedMessage} from "react-intl";
-import GetReviews from './graphql/getReviews.gql';
-
-import {useQuery} from "@apollo/react-hooks";
 
 
-const ReviewsContainer: FunctionComponent<ReviewsContainerProps> = ({reviews}) => {
+const ReviewsContainer: FunctionComponent<ReviewsContainerProps> = ({reviews, parentCallback, limit}) => {
+    // const [{offset, limit}, loadMoreReviews] = useState({offset: 0, limit: 1});
+    console.log(parentCallback);
+
     return (
         <div className={`${styles.right_block}`}>
             <div className={`${styles.reviews_list}`}>
 
                 <Fragment>
-                    {reviews.map((element, i) => {
+                    {reviews!.map((element, i) => {
                         return (
                             <div key={i}>
                                 <Review rate={element.rate}
@@ -44,6 +44,8 @@ const ReviewsContainer: FunctionComponent<ReviewsContainerProps> = ({reviews}) =
                     })}
                 </Fragment>
             </div>
+            <button onClick={() => parentCallback(limit + 1)}>
+                <FormattedMessage id="load-more"/></button>
         </div>
     )
 }

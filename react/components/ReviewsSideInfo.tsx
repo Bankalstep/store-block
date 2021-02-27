@@ -31,12 +31,12 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({}) => {
     }
 
     if (loadingRating && loadingReviews) {
-    // if (loadingRating) {
+        // if (loadingRating) {
         return <div className={`${styles.loader}`}/>;
     }
 
     if (!loadingRating && !errorRating && dataRating && !loadingReviews && dataReviews) {
-    // if (!loadingRating && !errorRating && dataRating) {
+        // if (!loadingRating && !errorRating && dataRating) {
         const rating = !loadingRating && !errorRating && dataRating ? dataRating.rating[0] : null;
         const reviews = !loadingReviews && !errorReviews && dataReviews ? dataReviews.reviews[0] : null;
         const stats: number[] = reviews.stats;
@@ -71,38 +71,36 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({}) => {
 
                     <div className={`${styles.stats}`}>
                         {stats.map((element, index, _array) => {
-                            const percent = Math.round(element / total * 100);
+                                const percent = Math.round(element / total * 100);
 
-                            return (
-                                <div className={`${styles.individual_stats_stars}`} key={index}
-                                     onClick={() => reviewsByRating(index)}>
-                                    {index}
-                                    <div className={`${styles.inline_percentage}`}>
-                                        <StarsStatsContainer rating={index}/>
-                                        {percent}%
+                                return (
+                                    <div className={`${styles.individual_stats_stars}`} key={index}
+                                         onClick={() => reviewsByRating(index)}>
+                                        {index}
+                                        <div className={`${styles.inline_percentage}`}>
+                                            <StarsStatsContainer rating={index}/>
+                                            {percent}%
+                                        </div>
+                                        <div style={background(percent)}
+                                             className={`${styles.netreviews_percentage_bar}`}/>
                                     </div>
-                                    <div style={background(percent)}
-                                         className={`${styles.netreviews_percentage_bar}`}/>
-                                </div>
-                            )
-                        }
+                                )
+                            }
                         )}
                     </div>
 
                     <div className={`${styles.netreviews_afnor}`}>
-                        <a className={`${styles.netreviews_certification}`} target="_blank" href="">Afficher le
-                            certificat
-                            de
-                            confiance</a>
-                        <label id={`${styles.netreviews_informations_label}`}>
+                        <a className={`${styles.netreviews_certification}`} target="_blank" href="">
+                            Afficher le certificat de confiance
+                        </a>
+
+                        <div id={`${styles.netreviews_informations_label}`}>
                         <span className={`${styles.extra_margin}`}
                               onClick={toggleInfo}>Avis soumis à un contrôle </span>
                             <FaInfoCircle/>
-                        </label>
+                            {showInfo ? <div><NetreviewsInfo onClick={toggleInfo}/></div> : null}
+                        </div>
                     </div>
-
-                    {showInfo ? <div><NetreviewsInfo onClick={toggleInfo}/></div> : null}
-
                 </div>
             </div>
         )
@@ -110,4 +108,4 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({}) => {
     return <div></div>
 }
 
-export default React.memo(ReviewsSideInfo);
+export default ReviewsSideInfo;

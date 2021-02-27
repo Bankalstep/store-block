@@ -21,17 +21,10 @@ const MediaContainer: FunctionComponent<MediaContainer> = ({medias}) => {
         console.log(elemUrl);
     }
 
-    useEffect(() => {
-        console.log(display);
-        console.log('action going in media container with display');
-        // if (display) {
-        //     return;
-        // }
-    }, [display]);
-    //
     // useEffect(() => {
-    //     console.log('action going in media container');
-    // });
+    //     console.log(display);
+    //     console.log('action going in media container with display');
+    // }, [display, elemUrl]);
 
     const backgroundImage = (url: string): any => {
         return {
@@ -54,7 +47,7 @@ const MediaContainer: FunctionComponent<MediaContainer> = ({medias}) => {
             <ul className={`${styles.netreviews_media_part}`}>
                 {mediaList}
             </ul>
-            {display ? <div><Carousel onClick={[toggleState, elemUrl]}/></div> : 'yo'}
+            {display ? <div><Carousel onClick={[toggleState, elemUrl]}/></div> : ''}
         </div>
     );
 }

@@ -3,13 +3,10 @@ import styles from "../styles.css";
 import {IoClose} from "react-icons/all";
 
 interface Carousel {
-    onClick: any,
-    url?: string
+    onClick: any
 }
 
-const Carousel: FunctionComponent<Carousel> = ({onClick, url}) => {
-    console.log(onClick);
-    console.log(url);
+const Carousel: FunctionComponent<Carousel> = ({onClick}) => {
 
     useEffect(() => {
         console.log('action going in CAROUSEL');
@@ -17,11 +14,10 @@ const Carousel: FunctionComponent<Carousel> = ({onClick, url}) => {
 
     return (
         <div id={`${styles.netreviews_media_modal}`}>
-            <span className={`${styles.close_carousel}`}><IoClose/></span>
+            <span className={`${styles.close_carousel}`} onClick={onClick[0]}><IoClose/></span>
 
             <div className={`${styles.netreviews_media_content}`}>
                 <img id={`${styles.netreviews_media_image}`} src={onClick[1]} alt={'product image'}/>
-                {/*<span onClick={onClick}><CgClose/></span>*/}
 
             </div>
         </div>
