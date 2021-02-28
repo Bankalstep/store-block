@@ -2,7 +2,9 @@
   "admin.navigation.label": "Example admin",
   "appframe.navigation.example": "zegfzrgzrg",
   "moderation.answer-from": "Réponse de ",
+  "moderation.show-chat" : "Show conversation",
   "yes": "Oui",
   "no": "Non",
-  "load-more": "Load more reviews"
+  "load-more": "Load more reviews",
+  "noreviews": "No review"
 }

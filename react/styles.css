@@ -103,6 +103,25 @@
     position: relative;
 }
 
+.load_more_button {
+    background: none;
+    margin-top: 10px;
+    padding: 0;
+    border: none;
+    outline: inherit;
+    font: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    color: #20201e;
+}
+
+.arrow_down_button {
+    padding: 3px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
 .netreviews_certification {
     color: #7b858f;
     text-decoration: none;
@@ -185,8 +204,27 @@
     padding-bottom: 6px;
 }
 
+.show_chat {
+    display: flex;
+    background: none;
+    padding: 0;
+    border: none;
+    outline: inherit;
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    color: #20201e;
+    margin-left: 17px;
+    margin-top: 0;
+}
+
+.chat_icon {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
 .netreviews_media_part {
-    display: block;
+    display: flex;
     width: 100%;
     height: auto;
     margin: 12px 0 10px 0;
@@ -199,7 +237,7 @@
     width: 75px;
     height: 60px;
     padding: 0;
-    margin: 0;
+    margin: 0 10px 0 0;
     text-decoration: none;
     cursor: pointer;
     background-size: cover;

@@ -15,31 +15,23 @@ export interface Media {
 
 const MediaContainer: FunctionComponent<MediaContainer> = ({medias}) => {
     const [{display, elemUrl}, setState] = useState({display: false, elemUrl: ''});
-    const toggleState = (elemUrl: string) => {
-        setState({display: !display, elemUrl: elemUrl})
-        console.log(display);
-        console.log(elemUrl);
-    }
-
-    // useEffect(() => {
-    //     console.log(display);
-    //     console.log('action going in media container with display');
-    // }, [display, elemUrl]);
-
+    const toggleState = (elemUrl: string) => setState({display: !display, elemUrl: elemUrl})
     const backgroundImage = (url: string): any => {
         return {
             backgroundImage: "url(" + url + ")"
         };
     };
-
-    const mediaList = medias.map((element: any, i: number) =>
-        <li key={i}><a
-            onClick={() => {
-                toggleState(element[0].large)
-            }}
-            datatype='image' className={`${styles.netreviews_image_thumb}`}
-            data-src={element[0].small} style={backgroundImage(element[0].small)}
-        /></li>
+    const mediaList = medias.map((element, i: number) => {
+            return (
+                <li key={i}><a
+                    onClick={() => {
+                        toggleState(element.large)
+                    }}
+                    datatype='image' className={`${styles.netreviews_image_thumb}`}
+                    data-src={element.small} style={backgroundImage(element.small)}
+                /></li>
+            )
+        }
     )
 
     return (

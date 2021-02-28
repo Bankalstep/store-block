@@ -1,6 +1,8 @@
-import React, {FunctionComponent, Fragment} from "react";
+import React, {FunctionComponent, Fragment, useState} from "react";
 import styles from "../styles.css";
 import ModerationBlock from "./Moderation";
+import {FormattedMessage} from "react-intl";
+import {FaComments} from "react-icons/all";
 
 export interface ModerationContainer {
     moderation: Moderation[]
@@ -17,20 +19,28 @@ interface Moderation {
 
 const ModerationContainerBlock: FunctionComponent<ModerationContainer> = ({moderation, commentUsername}) => {
     const chat = moderation.slice().reverse();
+    const [isVisible, setVisibility] = useState(false);
 
-    function toggleChat(){
-
+    function toggleChat() {
+        setVisibility(!isVisible)
     }
 
     return (
         <Fragment>
             {chat.map((element, i) => {
-                return <ModerationBlock comment_date={element.comment_date}
-                                        comment={element.comment}
-                                        comment_origin={element.comment_origin}
-                                        commentUsername={commentUsername}
-                                        key={i}/>
+                console.log(i);
+                return (
+                    <ModerationBlock commentDate={element.comment_date}
+                                     comment={element.comment}
+                                     commentOrigin={element.comment_origin}
+                                     commentUsername={commentUsername}
+                                     isVisible={i > 0 ? isVisible : true}
+                                     key={i}
+                    />)
             })}
+            <button className={`${styles.show_chat}`} onClick={toggleChat}><FaComments
+                className={`${styles.chat_icon}`}/><FormattedMessage
+                id="moderation.show-chat"/></button>
         </Fragment>
     )
 }

@@ -20,7 +20,7 @@ const Review: FunctionComponent<ReviewProps> = ({...reviewsProps}) => {
             </div>
             <div className={`${styles.customer_review}`}>{reviewsProps.review}</div>
 
-            {reviewsProps.medias ? <MediaContainer medias={[mediaArray]}/> : 'lol'}
+            {reviewsProps.medias ? <MediaContainer medias={mediaArray}/> : ''}
 
             <div className={`${styles.netreviews_customer_name}`}>{reviewsProps.firstname} {reviewsProps.lastname}.
                 <span> publié le {nrDateFormat(reviewsProps.publish_date.substr(0, 10))}</span>

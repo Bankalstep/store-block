@@ -16,7 +16,7 @@ const background = (percentage: any): any => {
     };
 };
 
-const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({}) => {
+const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({getReviewsByRating}) => {
     const [showInfo, setshowInfo] = useState(false);
     const toggleInfo = () => setshowInfo(!showInfo);
     const {data: dataRating, loading: loadingRating, error: errorRating} = useQuery(GetAverage, {
@@ -25,10 +25,6 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({}) => {
     const {data: dataReviews, loading: loadingReviews, error: errorReviews} = useQuery(GetReviews, {
         ssr: false
     });
-
-    function reviewsByRating(target: number) {
-        console.log(target + 1);
-    }
 
     if (loadingRating && loadingReviews) {
         // if (loadingRating) {
@@ -75,8 +71,7 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({}) => {
 
                                 return (
                                     <div className={`${styles.individual_stats_stars}`} key={index}
-                                         onClick={() => reviewsByRating(index)}>
-                                        {index}
+                                         onClick={() => getReviewsByRating([index + 1])}>
                                         <div className={`${styles.inline_percentage}`}>
                                             <StarsStatsContainer rating={index}/>
                                             {percent}%

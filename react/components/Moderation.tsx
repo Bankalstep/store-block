@@ -4,13 +4,14 @@ import {FormattedMessage} from "react-intl";
 import nrDateFormat from "../utils/DateConverter"
 
 interface Moderation {
-    comment_date: string
-    comment_origin: number
+    commentDate: string
+    commentOrigin: number
     comment: string
     commentUsername: string
+    isVisible: boolean
 }
 
-const ModerationBlock: FunctionComponent<Moderation> = ({comment_date, comment_origin, comment, commentUsername}) => {
+const ModerationBlock: FunctionComponent<Moderation> = ({commentDate, commentOrigin, comment, commentUsername, isVisible}) => {
     function getOrigin(param: number) {
         let origin = "Modérateur";
         if (param == 2) {
@@ -22,14 +23,14 @@ const ModerationBlock: FunctionComponent<Moderation> = ({comment_date, comment_o
     }
 
     return (
-        <div className={`${styles.netreviews_discussion}`}>
+        <div style={isVisible ? {display: 'block'} : {display: 'none'}} className={`${styles.netreviews_discussion}`}>
             <div className={`${styles.netreviews_website_answer}`}>
-                    <span className={`${styles.netreviews_answer_title}`}>
-                        <FormattedMessage
-                            id="moderation.answer-from"/>{getOrigin(comment_origin)} le {nrDateFormat(comment_date.substr(0, 10))}
-                    </span>
-                <br/>
-                {comment}
+                <span className={`${styles.netreviews_answer_title}`}>
+                    <FormattedMessage id="moderation.answer-from"/>
+                    {getOrigin(commentOrigin)}
+                    le {nrDateFormat(commentDate.substr(0, 10))}
+                </span>
+                <span>{comment}</span>
             </div>
         </div>
     )
