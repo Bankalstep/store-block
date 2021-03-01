@@ -15,12 +15,16 @@ export interface Media {
 
 const MediaContainer: FunctionComponent<MediaContainer> = ({medias}) => {
     const [{display, elemUrl}, setState] = useState({display: false, elemUrl: ''});
-    const toggleState = (elemUrl: string) => setState({display: !display, elemUrl: elemUrl})
+    const toggleState = (elemUrl: string) => {
+        console.log('ici ?');
+        setState({display: !display, elemUrl: elemUrl})
+    }
     const backgroundImage = (url: string): any => {
         return {
             backgroundImage: "url(" + url + ")"
         };
     };
+
     const mediaList = medias.map((element, i: number) => {
             return (
                 <li key={i}><a

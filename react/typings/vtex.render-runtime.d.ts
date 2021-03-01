@@ -1,38 +1,40 @@
 /* Typings for `render-runtime` */
 declare module 'vtex.render-runtime' {
-  import { Component, ComponentType, ReactElement, ReactType } from 'react'
+    import {Component, ComponentType, ReactElement, ReactType} from 'react'
 
-  export interface NavigationOptions {
-    page: string
-    params?: any
-  }
-
-  export interface RenderContextProps {
-    runtime: {
-      navigate: (options: NavigationOptions) => void
+    export interface NavigationOptions {
+        page: string
+        params?: any
     }
-  }
 
-  interface ExtensionPointProps {
-    id: string
-    [key: string]: any
-  }
+    export interface RenderContextProps {
+        runtime: {
+            navigate: (options: NavigationOptions) => void
+        }
+    }
 
-  export const ExtensionPoint: ComponentType<ExtensionPointProps>
+    interface ExtensionPointProps {
+        id: string
 
-  interface ChildBlockProps {
-    id: string
-  }
+        [key: string]: any
+    }
 
-  export const ChildBlock: ComponentType<ChildBlockProps>
-  export const useChildBlock = function({ id: string }): object {}
+    export const ExtensionPoint: ComponentType<ExtensionPointProps>
 
-  export const Helmet: ReactElement
-  export const Link: ReactType
-  export const NoSSR: ReactElement
-  export const RenderContextConsumer: ReactElement
-  export const canUseDOM: boolean
-  export const withRuntimeContext: <TOriginalProps extends {}>(
-    Component: ComponentType<TOriginalProps & RenderContextProps>
-  ) => ComponentType<TOriginalProps>
+    interface ChildBlockProps {
+        id: string
+    }
+
+    export const ChildBlock: ComponentType<ChildBlockProps>
+    export const useChildBlock = function ({id: string}): object {
+    }
+
+    export const Helmet: ReactElement
+    export const Link: ReactType
+    export const NoSSR: ReactElement
+    export const RenderContextConsumer: ReactElement
+    export const canUseDOM: boolean
+    export const withRuntimeContext: <TOriginalProps extends {}>(
+        Component: ComponentType<TOriginalProps & RenderContextProps>
+    ) => ComponentType<TOriginalProps>
 }

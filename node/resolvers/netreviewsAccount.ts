@@ -6,9 +6,4 @@ export const netreviewsAccount = (ctx: Context) => {
         fields: ['idWebsite', 'secretKey', 'plateforme'],
         pagination: {page: 1, pageSize: 1}
     })
-
-// return await masterdata.scrollDocuments({
-//     dataEntity: "netreviews",
-//     fields: ['idWebsite', 'secretKey', 'plateforme']
-// });
 }

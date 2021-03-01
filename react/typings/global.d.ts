@@ -1,3 +1,5 @@
+import {Moderation} from "../components/Moderation";
+
 export interface StarsProps {
     rating: number
 }
@@ -8,23 +10,22 @@ export interface RatingProps {
 
 export interface ReviewsContainerProps {
     reviews: ReviewProps[]
-    loadMoreReviews: updateVariables,
     limit: { limit: number, initialLimit: number }
-    filter: number[],
-    stats: number[],
+    filter: number[]
+    filterByOrder: FilterByOrder
+    order: string
+    getMoreReviews: (limit: number) => void
+    stats: number[]
     loading: boolean
 }
 
-interface updateVariables {
-    (limit: number): void;
+export interface FilterByOrder {
+    (order: string): void
 }
 
 export interface SideInfoProps {
-    getReviewsByRating: reviewsByRating
-}
-
-interface reviewsByRating {
-    (rating: [number]): void;
+    stats: number[]
+    filterByRating: (rating: [number]) => void
 }
 
 export interface ReviewProps {
@@ -37,7 +38,7 @@ export interface ReviewProps {
     count_helpful_no: number
     count_helpful_yes: number
     description: string
-    moderation: ModerationContainer
+    moderation: Moderation[]
     email: string
     id_product: number
     id_review: string

@@ -1,9 +1,3 @@
-declare var process: {
-    env: {
-        VTEX_APP_ID: string
-    }
-}
-
 export const queries = {
     rating: async (_: any, _args: any, ctx: Context, _infos: any) => {
         const {clients: {netreviews}} = ctx;
@@ -19,11 +13,10 @@ export const queries = {
     },
     reviews: async (_: any, args: any, ctx: Context, _infos: any) => {
         const {clients: {netreviews}} = ctx;
-        const {offset, limit, filter, order} = args;
+        const {product, offset, limit, filter, order} = args;
 
-        console.log(args);
         try {
-            const data = await netreviews.getReviews(ctx, {offset, limit, filter, order});
+            const data = await netreviews.getReviews(ctx, {product, offset, limit, filter, order});
             // console.log(data);
             return data;
         } catch (error) {

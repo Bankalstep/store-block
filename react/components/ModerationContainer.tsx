@@ -28,7 +28,6 @@ const ModerationContainerBlock: FunctionComponent<ModerationContainer> = ({moder
     return (
         <Fragment>
             {chat.map((element, i) => {
-                console.log(i);
                 return (
                     <ModerationBlock commentDate={element.comment_date}
                                      comment={element.comment}

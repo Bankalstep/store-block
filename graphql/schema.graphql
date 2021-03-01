@@ -1,7 +1,7 @@
 type Query {
     account: NetreviewsAccount
     rating(locale: String): [NetreviewsRating]
-    reviews(idWebsite: String, plateforme: String, offset: Int, limit: Int, filter: [Int], order: String): [NetreviewsReviews]
+    reviews(product: String, idWebsite: String, plateforme: String, offset: Int, limit: Int, filter: [Int], order: String) : [NetreviewsReviews]
 }
 
 type NetreviewsAccount {

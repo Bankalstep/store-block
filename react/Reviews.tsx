@@ -8,22 +8,22 @@ import "@fontsource/nunito/700.css";
 import styles from "./styles.css";
 import ReviewsContainer from "./components/ReviewsContainer";
 import ReviewsSideInfo from "./components/ReviewsSideInfo";
-import getRecommandation from "./utils/RecommandationPercentage";
-import {getTotal} from "./utils/RecommandationPercentage";
-
-// import useProduct from "vtex.product-context/useProduct";
+import useProduct from "vtex.product-context/useProduct";
 
 const Reviews: FunctionComponent = () => {
     const [filter, setFilter] = useState([]);
-    const [order, setOrder] = useState('date_desc');
+    const [selectedOrder, setOrder] = useState('date_desc');
     const [reviews, setReviews] = useState([]);
-    const initialLimit = 5;
-    const [limit, setLimit] = useState(initialLimit);
+    const initialLimit = 2;
+    const [limit, setLimit] = useState(2);
+    const [stats, setStats] = useState([])
+    const product = useProduct().product.productId;
     let variables = {
+        product: "30",
         offset: 0,
         limit: limit,
         filter: filter,
-        order: order
+        order: selectedOrder
     }
     const {data: dataReviews, loading: loadingReviews, error: errorReviews} = useQuery(GetReviews, {
         ssr: false,
@@ -31,16 +31,13 @@ const Reviews: FunctionComponent = () => {
         fetchPolicy: "no-cache"
     });
 
-    const memoizedStats: number[] = !loadingReviews && !errorReviews && dataReviews ? dataReviews.reviews[0].stats : [];
-    // useMemo(() => dataReviews.reviews[0].stats, [dataReviews.reviews[0].stats]) : [];
-
-    console.log(memoizedStats);
-
+    // const memoizedStats: number[] = !loadingReviews && !errorReviews && dataReviews.reviews.length ? dataReviews.reviews[0].stats : [];
 
     useEffect(() => {
         console.log("useeffect going on");
-        if (!loadingReviews && !errorReviews && dataReviews) {
+        if (!loadingReviews && !errorReviews && dataReviews.reviews.length) {
             setReviews(dataReviews.reviews[0].reviews);
+            setStats(dataReviews.reviews[0].stats)
         }
     }, [dataReviews]);
 
@@ -53,17 +50,25 @@ const Reviews: FunctionComponent = () => {
         setFilter(rating);
     }
 
-    // const MemoisedSideInfo = memo(ReviewsSideInfo);
+    function filterByOrder(order: string) {
+        setLimit(initialLimit);
+        setFilter([]);
+        setOrder(order);
+    }
+
+    const MemoisedReviewsSideInfo = memo(ReviewsSideInfo);
 
     return (
         <div>
             <div className={`${styles.netreviews_review_rate_and_stars}`}>
-                <ReviewsSideInfo getReviewsByRating={filterByRating}/>
+                <MemoisedReviewsSideInfo stats={stats} filterByRating={filterByRating}/>
                 <ReviewsContainer reviews={reviews}
-                                  loadMoreReviews={moreReviews}
                                   limit={{limit, initialLimit}}
                                   filter={filter}
-                                  stats={memoizedStats}
+                                  filterByOrder={filterByOrder}
+                                  order={selectedOrder}
+                                  getMoreReviews={moreReviews}
+                                  stats={stats}
                                   loading={loadingReviews}
                 />
             </div>

@@ -19,18 +19,18 @@ const ModerationBlock: FunctionComponent<Moderation> = ({commentDate, commentOri
         } else {
             origin = commentUsername;
         }
-        return origin
+        return origin;
     }
 
     return (
-        <div style={isVisible ? {display: 'block'} : {display: 'none'}} className={`${styles.netreviews_discussion}`}>
+        <div style={isVisible ? {opacity: 1, height: 'auto'} : {opacity: 0, height: 0}} className={`${styles.netreviews_discussion}`}>
             <div className={`${styles.netreviews_website_answer}`}>
                 <span className={`${styles.netreviews_answer_title}`}>
                     <FormattedMessage id="moderation.answer-from"/>
                     {getOrigin(commentOrigin)}
                     le {nrDateFormat(commentDate.substr(0, 10))}
                 </span>
-                <span>{comment}</span>
+                <span className={`${styles.netreviews_answer}`}>{comment}</span>
             </div>
         </div>
     )

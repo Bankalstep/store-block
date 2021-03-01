@@ -6,5 +6,10 @@
   "yes": "Oui",
   "no": "Non",
   "load-more": "Load more reviews",
-  "noreviews": "No review"
+  "noreviews": "No review",
+  "filter.date-asc": "Oldest",
+  "filter.rate-desc": "Highest",
+  "filter.rate-asc": "Lowest",
+  "filter.most-helpful": "Most helpful",
+  "filter.date-desc": "Most recent"
 }

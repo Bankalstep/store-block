@@ -1,4 +1,4 @@
-import React, {FunctionComponent, MouseEventHandler, useState} from "react";
+import React, {Fragment, FunctionComponent, MouseEventHandler, useEffect, useState} from "react";
 import {SideInfoProps} from "../typings/global";
 import styles from "../styles.css";
 import {FaInfoCircle, FaUserAlt} from "react-icons/fa";
@@ -16,26 +16,15 @@ const background = (percentage: any): any => {
     };
 };
 
-const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({getReviewsByRating}) => {
+const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({stats, filterByRating}) => {
     const [showInfo, setshowInfo] = useState(false);
     const toggleInfo = () => setshowInfo(!showInfo);
     const {data: dataRating, loading: loadingRating, error: errorRating} = useQuery(GetAverage, {
         ssr: false
     });
-    const {data: dataReviews, loading: loadingReviews, error: errorReviews} = useQuery(GetReviews, {
-        ssr: false
-    });
 
-    if (loadingRating && loadingReviews) {
-        // if (loadingRating) {
-        return <div className={`${styles.loader}`}/>;
-    }
-
-    if (!loadingRating && !errorRating && dataRating && !loadingReviews && dataReviews) {
-        // if (!loadingRating && !errorRating && dataRating) {
+    if (!loadingRating && !errorRating && dataRating) {
         const rating = !loadingRating && !errorRating && dataRating ? dataRating.rating[0] : null;
-        const reviews = !loadingReviews && !errorReviews && dataReviews ? dataReviews.reviews[0] : null;
-        const stats: number[] = reviews.stats;
         const total = getRecommandation(stats).total;
         const recommandation = getRecommandation(stats).percentageRecommandation;
 
@@ -71,7 +60,7 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({getReviewsByRating})
 
                                 return (
                                     <div className={`${styles.individual_stats_stars}`} key={index}
-                                         onClick={() => getReviewsByRating([index + 1])}>
+                                         onClick={() => filterByRating([index + 1])}>
                                         <div className={`${styles.inline_percentage}`}>
                                             <StarsStatsContainer rating={index}/>
                                             {percent}%
@@ -97,6 +86,7 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({getReviewsByRating})
                         </div>
                     </div>
                 </div>
+                {loadingRating ? <div className={`${styles.loader}`}/> : ''}
             </div>
         )
     }

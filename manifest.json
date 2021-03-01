@@ -32,6 +32,40 @@
       }
     }
   ],
+  "settingsSchema": {
+    "title": "Netreviews Module Configuration",
+    "type": "object",
+    "properties": {
+      "idWebsite": {
+        "type": "string",
+        "access": "public",
+        "title": "IdWebsite",
+        "description": "Your Netreviews IdWebsite"
+      },
+      "secretKey": {
+        "type": "string",
+        "access": "private",
+        "title": "SecretKey",
+        "description": "Your Netreviews SecretKey"
+      },
+      "locale": {
+        "type": "string",
+        "access": "public",
+        "enum": [
+          "es-BR",
+          "es-CO",
+          "es-MX",
+          "es-PE",
+          "es-CL",
+          "es-ES",
+          "pt-PT"
+        ],
+        "default": "es-BR",
+        "title": "Country",
+        "description": "Your country"
+      }
+    }
+  },
   "dependencies": {
     "vtex.styleguide": "9.x",
     "vtex.css-handles": "0.x",
