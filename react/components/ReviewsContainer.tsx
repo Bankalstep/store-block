@@ -1,4 +1,4 @@
-import React, {Fragment, FunctionComponent} from "react";
+import React, {FunctionComponent, useRef} from "react";
 import styles from '../styles.css';
 import {ReviewsContainerProps} from '../typings/global';
 import Review from "./Review";
@@ -20,6 +20,8 @@ const ReviewsContainer: FunctionComponent<ReviewsContainerProps> = ({
                                                                         loading
                                                                     }) => {
     const total: number = getTotal(stats, filter);
+    const reviewsNode = useRef(null);
+
     let reviewsCount = 0;
     reviewsCount += limit.limit;
 
@@ -34,7 +36,7 @@ const ReviewsContainer: FunctionComponent<ReviewsContainerProps> = ({
 
                         {reviews!.map((element, i) => {
                             return (
-                                <div key={i}>
+                                <div id="reviews" key={i} ref={reviewsNode}>
                                     <Review rate={element.rate}
                                             firstname={element.firstname}
                                             lastname={element.lastname}
@@ -68,7 +70,7 @@ const ReviewsContainer: FunctionComponent<ReviewsContainerProps> = ({
             }
             {total > reviewsCount ?
                 <button className={`${styles.load_more_button}`}
-                        onClick={() => getMoreReviews(limit.limit + limit.initialLimit)}>
+                        onClick={() => getMoreReviews(limit.initialLimit)}>
                     <FormattedMessage id="load-more"/><FaAngleDown className={`${styles.arrow_down_button}`}/>
                 </button> : ''}
         </div>

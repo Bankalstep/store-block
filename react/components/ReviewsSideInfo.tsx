@@ -1,28 +1,32 @@
-import React, {CSSProperties, Fragment, FunctionComponent, MouseEventHandler, useEffect, useState} from "react";
+import React, {FunctionComponent, useState} from "react";
 import {SideInfoProps} from "../typings/global";
 import styles from "../styles.css";
-import {FaAngleUp, FaInfoCircle, FaUserAlt} from "react-icons/fa";
+import {FaInfoCircle, FaUserAlt} from "react-icons/fa";
 import StarsStatsContainer from "./StarsStatsContainer";
 import NetreviewsInfo from "./NetreviewsInfo";
 import {useQuery} from "react-apollo";
 import GetAverage from "../graphql/getAverage.gql";
-import GetReviews from "../graphql/getReviews.gql";
 import getRecommandation from "../utils/RecommandationPercentage";
-import {load} from "@fingerprintjs/fingerprintjs";
 import {FormattedMessage} from "react-intl";
-import set = Reflect.set;
-import {func} from "prop-types";
+import {TiDelete} from "react-icons/all";
+import useProduct from "vtex.product-context/useProduct";
 
 const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({stats, filterByRating, filter, setFilterClicked}) => {
     const [showInfo, setshowInfo] = useState(false);
-    // const [filterClicked, setFilterClicked] = useState(false);
-    const filterClicked = !!filter.length;
-
-    console.log(filterClicked);
     const toggleInfo = () => setshowInfo(!showInfo);
 
+    const filterClicked = !!filter.length;
+    const product = useProduct().product.productId;
+    const total = getRecommandation(stats).total;
+    const recommandation = getRecommandation(stats).percentageRecommandation;
+
+    let variables = {
+        product: product
+    }
+
     const {data, loading, error} = useQuery(GetAverage, {
-        ssr: false
+        ssr: false,
+        variables: variables
     });
 
     const background = (percentage: any): any => {
@@ -31,14 +35,12 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({stats, filterByRatin
         };
     };
 
+    function compareIndex(index: number, selectedFilter: number[]) {
+        return selectedFilter.length && index + 1 === selectedFilter[0] ? {opacity: 1} : {opacity: 0.3};
+    }
+
     if (!loading && !error && data) {
         const rating = data.rating.length ? data.rating[0] : null;
-        const total = getRecommandation(stats).total;
-        const recommandation = getRecommandation(stats).percentageRecommandation;
-
-        function compareIndex(index: number, selectedFilter: number[]) {
-            return selectedFilter.length && index + 1 === selectedFilter[0] ? {opacity: 1} : {opacity: 0.2};
-        }
 
         return (
             <div className={`${styles.left_block}`}>
@@ -90,6 +92,16 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({stats, filterByRatin
                         )}
                     </div>
 
+                    {filter.length ?
+                        <button className={`${styles.reset_filter}`}
+                                onClick={() => {
+                                    filterByRating([]);
+                                    setFilterClicked(false);
+                                }}>
+                            <FormattedMessage id="reset-filter"/><TiDelete className={`${styles.custom_cross}`}/>
+                        </button>
+                        : ''}
+
                     <div className={`${styles.netreviews_afnor}`}>
                         <a className={`${styles.netreviews_certification}`} target="_blank" href="">
                             Afficher le certificat de confiance
@@ -105,16 +117,6 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({stats, filterByRatin
                 </div>
 
                 {loading ? <div className={`${styles.loader}`}/> : ''}
-
-                {filter.length ?
-                    <button className={`${styles.reset_filter}`}
-                            onClick={() => {
-                                filterByRating([]);
-                                setFilterClicked(false);
-                            }}>
-                        <FormattedMessage id="reset-filter"/><FaAngleUp className={`${styles.custom_arrowup}`}/>
-                    </button>
-                    : ''}
             </div>
         )
     }

@@ -8,6 +8,7 @@
 .netreviews_review_stars {
     font-family: Nunito, Roboto, sans-serif;
     display: flex;
+    cursor: pointer;
 }
 
 .inactive_container {
@@ -113,6 +114,10 @@
     position: relative;
 }
 
+.no_review {
+    margin-top: 50px;
+}
+
 .load_more_button {
     align-self: start;
     background: none;
@@ -130,20 +135,21 @@
 .reset_filter {
     display: flex;
     align-items: center;
-    background-color: #f2f2f2;
-    margin: 10px auto;
+    background-color: #fafafa;
+    color: #5A5A58;
+    margin: 25px auto 0;
     padding: 6px 12px;
     border: none;
+    border-radius: 2px;
     outline: inherit;
     font: inherit;
     font-weight: 700;
     font-size: 14px;
     cursor: pointer;
-    color: #20201e;
 }
 
-.custom_arrowup {
-    font-size: 22px;
+.custom_cross {
+    font-size: 18px;
     margin-left: 5px;
 }
 
@@ -340,7 +346,7 @@
     font-size: 12px;
     text-align: left;
     padding: 0;
-    margin: 0 0 10px 0;
+    margin: 2px 0 10px 0;
     color: #2c2c2c;
     font-family: Nunito, Arial, Helvetica, sans-serif;
 }
@@ -423,7 +429,7 @@
     position: absolute;
     z-index: 999;
     width: 100%;
-    align-items: start;
+    align-items: center;
     justify-content: center;
     height: 100%;
     background: #ffffff;

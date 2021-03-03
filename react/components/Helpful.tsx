@@ -1,7 +1,8 @@
 import React, {FunctionComponent} from "react";
 import styles from "../styles.css";
 import {FormattedMessage} from "react-intl";
-// import {helpfulMethods} from "../utils/HelpfulVote"
+// import {helpfulMethods} from 'netreviews.helpfulvote';
+
 
 interface HelpfulProps {
     count_helpful_no: number

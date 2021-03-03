@@ -1,7 +1,6 @@
-import React, {FunctionComponent, memo, useEffect, useMemo, useState} from "react";
+import React, {FunctionComponent, useEffect, useState} from "react";
 import {useQuery} from "react-apollo";
 import GetReviews from "./graphql/getReviews.gql";
-import GetAverage from "./graphql/getAverage.gql";
 import "@fontsource/nunito";
 import "@fontsource/nunito/600.css";
 import "@fontsource/nunito/700.css";
@@ -15,7 +14,7 @@ const Reviews: FunctionComponent = () => {
     const [selectedOrder, setOrder] = useState('date_desc');
     const [reviews, setReviews] = useState([]);
     const [stats, setStats] = useState([]);
-    const initialLimit = 5;
+    const initialLimit = 2;
     const [limit, setLimit] = useState(initialLimit);
     const [filterClicked, setFilterClicked] = useState(!!filter.length);
 
@@ -31,8 +30,7 @@ const Reviews: FunctionComponent = () => {
 
     const {data, loading, error} = useQuery(GetReviews, {
         ssr: false,
-        variables: variables,
-        fetchPolicy: "no-cache"
+        variables: variables
     });
 
     useEffect(() => {
@@ -42,8 +40,12 @@ const Reviews: FunctionComponent = () => {
         }
     }, [data]);
 
-    function moreReviews(limit: number) {
-        setLimit(limit);
+    function moreReviews(increment: number) {
+        setLimit((limit) => {
+            console.log(limit);
+            console.log(increment);
+            return limit + increment
+        });
     }
 
     function filterByRating(rating: [number] | any) {
@@ -60,7 +62,7 @@ const Reviews: FunctionComponent = () => {
 
     return (
         <div>
-            <div className={`${styles.netreviews_review_rate_and_stars}`}>
+            <div id="netreviews_block" className={`${styles.netreviews_review_rate_and_stars}`}>
                 <ReviewsSideInfo stats={stats} filterByRating={filterByRating} filter={filter} setFilterClicked={setFilterClicked}/>
                 <ReviewsContainer reviews={reviews}
                                   limit={{limit, initialLimit}}

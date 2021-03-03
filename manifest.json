@@ -58,7 +58,8 @@
           "es-PE",
           "es-CL",
           "es-ES",
-          "pt-PT"
+          "pt-PT",
+          "en-US"
         ],
         "default": "es-BR",
         "title": "Country",

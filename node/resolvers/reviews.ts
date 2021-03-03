@@ -1,13 +1,14 @@
 export const queries = {
-    rating: async (_: any, _args: any, ctx: Context, _infos: any) => {
+    rating: async (_: any, args: any, ctx: Context, _infos: any) => {
         const {clients: {netreviews}} = ctx;
-        // const appId = process.env.VTEX_APP_ID;
+        const {product} = args;
+
         try {
-            const data = await netreviews.getRating(ctx);
-            // console.log(data);
+            const data = await netreviews.getRating(ctx, product);
+            console.log(data);
             return data[Object.keys(data)[0]];
         } catch (error) {
-            // console.log(error);
+            console.log(error);
             throw new TypeError(error);
         }
     },
