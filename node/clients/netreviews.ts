@@ -25,8 +25,6 @@ class Netreviews extends ExternalClient {
 
     constructor(context: IOContext, options?: InstanceOptions) {
         super('https://awsapis3.netreviews.eu', context, options);
-        console.log(context);
-
     }
 
     public async getAccountInfo(ctx: Context) {

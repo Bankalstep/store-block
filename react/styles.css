@@ -34,9 +34,18 @@
 }
 
 .right_block {
+    display: flex;
+    flex-direction: column;
     flex: 0 1 100%;
     margin-left: 20px;
-    margin-top: 50px;
+}
+
+.dropdown_override {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 2px;
+    margin-bottom: 13px;
 }
 
 .netreviews_logo {
@@ -74,6 +83,7 @@
     cursor: pointer;
     margin-top: 20px;
     line-height: 10px;
+    opacity: 1;
 }
 
 .active_stars {
@@ -104,6 +114,7 @@
 }
 
 .load_more_button {
+    align-self: start;
     background: none;
     margin-top: 10px;
     padding: 0;
@@ -114,6 +125,26 @@
     font-size: 14px;
     cursor: pointer;
     color: #20201e;
+}
+
+.reset_filter {
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    margin: 10px auto;
+    padding: 6px 12px;
+    border: none;
+    outline: inherit;
+    font: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    color: #20201e;
+}
+
+.custom_arrowup {
+    font-size: 22px;
+    margin-left: 5px;
 }
 
 .arrow_down_button {
@@ -184,13 +215,13 @@
 }
 
 .stats_block {
-    /*min-height: 412px;*/
     background-color: #f2f2f2;
     display: block;
     padding: 20px;
 }
 
 .reviews_list {
+    position: relative;
     flex: 1 0 76%;
 }
 
@@ -225,7 +256,7 @@
 }
 
 .netreviews_answer {
-    display: inline-block;
+    display: block;
     margin: 2px 0;
 }
 
@@ -316,11 +347,10 @@
 
 .netreviews_discussion {
     margin-left: 15px;
-    transition: opacity, height 1s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 .netreviews_website_answer {
-    margin-bottom: 5px;
     padding: 10px 10px 10px 10px;
     background-color: #f4f4f4;
     width: 75%;
@@ -389,7 +419,15 @@
 
 /*loader*/
 .loader {
-    display: inline-block;
+    display: flex;
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    align-items: start;
+    justify-content: center;
+    height: 100%;
+    background: #ffffff;
+    opacity: 0.6;
 }
 
 .loader:after {
@@ -411,8 +449,4 @@
     100% {
         transform: rotate(360deg);
     }
-}
-
-.nik {
-    color: #e7a81b;
 }

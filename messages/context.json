@@ -3,13 +3,15 @@
   "appframe.navigation.example": "zegfzrgzrg",
   "moderation.answer-from": "Réponse de ",
   "moderation.show-chat" : "Show conversation",
-  "yes": "Oui",
-  "no": "Non",
+  "yes": "Yes",
+  "no": "No",
   "load-more": "Load more reviews",
   "noreviews": "No review",
   "filter.date-asc": "Oldest",
   "filter.rate-desc": "Highest",
   "filter.rate-asc": "Lowest",
   "filter.most-helpful": "Most helpful",
-  "filter.date-desc": "Most recent"
+  "filter.date-desc": "Most recent",
+  "filter.filter": "Filter reviews by",
+  "reset-filter": "Reset filter"
 }

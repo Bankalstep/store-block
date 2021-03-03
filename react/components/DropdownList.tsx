@@ -1,12 +1,13 @@
 import React, {FunctionComponent} from "react";
 import {Dropdown} from 'vtex.styleguide'
-import {FilterByOrder} from "../typings/global";
-import {defineMessages, IntlProvider, useIntl} from 'react-intl';
+import {defineMessages, useIntl} from 'react-intl';
+import {ReviewsContainerProps} from "../typings/global";
+import styles from '../styles.css';
 
 
 interface DropdownProps {
-    filterByOrder: FilterByOrder
-    selectedOrder: string
+    filterByOrder: ReviewsContainerProps['filterByOrder']
+    selectedOrder: any
 }
 
 const messages = defineMessages({
@@ -29,6 +30,9 @@ const messages = defineMessages({
     default: {
         defaultMessage: '',
         id: 'filter.date-desc',
+    },
+    filter: {
+        id: 'filter.filter'
     }
 });
 
@@ -36,17 +40,18 @@ const DropdownList: FunctionComponent<DropdownProps> = ({filterByOrder, selected
     const intl = useIntl();
 
     const options = [
-        {value: 'date_asc', label: 'oldest'},
-        {value: 'rate_desc', label: 'highest'},
-        {value: 'rate_asc', label: 'lowest'},
-        {value: 'most_helpful', label: 'most_useful'},
-        {value: 'date_desc', label: 'default'},
+        {value: 'date_desc', label: intl.formatMessage(messages.default)},
+        {value: 'date_asc', label: intl.formatMessage(messages.oldest)},
+        {value: 'rate_desc', label: intl.formatMessage(messages.highest)},
+        {value: 'rate_asc', label: intl.formatMessage(messages.lowest)},
+        {value: 'most_helpful', label: intl.formatMessage(messages.most_useful)},
     ];
 
     return (
-        <div>
+        <div className={`${styles.dropdown_override}`}>
+            <span className={`${styles.extra_margin}`}>{intl.formatMessage(messages.filter)}&nbsp;:&nbsp;</span>
             <Dropdown
-                label=""
+                size='small'
                 options={options}
                 value={selectedOrder}
                 onChange={filterByOrder}
@@ -57,15 +62,3 @@ const DropdownList: FunctionComponent<DropdownProps> = ({filterByOrder, selected
 }
 
 export default DropdownList;
-
-//
-// <div className="netreviews_filtering_section"><label>Trier les avis :
-//     <select id="netreviews_reviews_filter" name="netreviews_reviews_filter" onChange="refreshReviewsWithFilter('')">
-//         <option value="newest" selected="selected">Les plus récents</option>
-//         <option value="oldest">Les plus anciens</option>
-//         <option value="highest">Notes les plus élevées</option>
-//         <option value="lowest">Notes les plus basses</option>
-//         <option value="most_useful">Les plus utiles</option>
-//         <option style="display:none;" value="rate">Note</option>
-//     </select></label>
-// </div>

@@ -14,32 +14,33 @@ const Reviews: FunctionComponent = () => {
     const [filter, setFilter] = useState([]);
     const [selectedOrder, setOrder] = useState('date_desc');
     const [reviews, setReviews] = useState([]);
-    const initialLimit = 2;
-    const [limit, setLimit] = useState(2);
-    const [stats, setStats] = useState([])
+    const [stats, setStats] = useState([]);
+    const initialLimit = 5;
+    const [limit, setLimit] = useState(initialLimit);
+    const [filterClicked, setFilterClicked] = useState(!!filter.length);
+
     const product = useProduct().product.productId;
+
     let variables = {
-        product: "30",
+        product: product,
         offset: 0,
         limit: limit,
         filter: filter,
         order: selectedOrder
     }
-    const {data: dataReviews, loading: loadingReviews, error: errorReviews} = useQuery(GetReviews, {
+
+    const {data, loading, error} = useQuery(GetReviews, {
         ssr: false,
         variables: variables,
         fetchPolicy: "no-cache"
     });
 
-    // const memoizedStats: number[] = !loadingReviews && !errorReviews && dataReviews.reviews.length ? dataReviews.reviews[0].stats : [];
-
     useEffect(() => {
-        console.log("useeffect going on");
-        if (!loadingReviews && !errorReviews && dataReviews.reviews.length) {
-            setReviews(dataReviews.reviews[0].reviews);
-            setStats(dataReviews.reviews[0].stats)
+        if (!loading && !error && data.reviews.length) {
+            setReviews(data.reviews[0].reviews);
+            setStats(data.reviews[0].stats)
         }
-    }, [dataReviews]);
+    }, [data]);
 
     function moreReviews(limit: number) {
         setLimit(limit);
@@ -50,18 +51,17 @@ const Reviews: FunctionComponent = () => {
         setFilter(rating);
     }
 
-    function filterByOrder(order: string) {
+    function filterByOrder(event: React.ChangeEvent<HTMLInputElement>) {
+        setFilterClicked(!filterClicked)
         setLimit(initialLimit);
         setFilter([]);
-        setOrder(order);
+        setOrder(event.target.value);
     }
-
-    const MemoisedReviewsSideInfo = memo(ReviewsSideInfo);
 
     return (
         <div>
             <div className={`${styles.netreviews_review_rate_and_stars}`}>
-                <MemoisedReviewsSideInfo stats={stats} filterByRating={filterByRating}/>
+                <ReviewsSideInfo stats={stats} filterByRating={filterByRating} filter={filter} setFilterClicked={setFilterClicked}/>
                 <ReviewsContainer reviews={reviews}
                                   limit={{limit, initialLimit}}
                                   filter={filter}
@@ -69,7 +69,7 @@ const Reviews: FunctionComponent = () => {
                                   order={selectedOrder}
                                   getMoreReviews={moreReviews}
                                   stats={stats}
-                                  loading={loadingReviews}
+                                  loading={loading}
                 />
             </div>
         </div>

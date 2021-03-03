@@ -12,20 +12,18 @@ export interface ReviewsContainerProps {
     reviews: ReviewProps[]
     limit: { limit: number, initialLimit: number }
     filter: number[]
-    filterByOrder: FilterByOrder
+    filterByOrder: (order: any) => void
     order: string
     getMoreReviews: (limit: number) => void
     stats: number[]
     loading: boolean
 }
 
-export interface FilterByOrder {
-    (order: string): void
-}
-
 export interface SideInfoProps {
     stats: number[]
-    filterByRating: (rating: [number]) => void
+    filterByRating: (rating: [number] | []) => void
+    filter: number[]
+    setFilterClicked: (filter: boolean) => void
 }
 
 export interface ReviewProps {

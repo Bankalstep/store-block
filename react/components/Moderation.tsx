@@ -23,12 +23,12 @@ const ModerationBlock: FunctionComponent<Moderation> = ({commentDate, commentOri
     }
 
     return (
-        <div style={isVisible ? {opacity: 1, height: 'auto'} : {opacity: 0, height: 0}} className={`${styles.netreviews_discussion}`}>
+        <div style={isVisible ? {opacity: 1, maxHeight: '300px'} : {opacity: 0, maxHeight: 0}} className={`${styles.netreviews_discussion}`}>
             <div className={`${styles.netreviews_website_answer}`}>
                 <span className={`${styles.netreviews_answer_title}`}>
                     <FormattedMessage id="moderation.answer-from"/>
                     {getOrigin(commentOrigin)}
-                    le {nrDateFormat(commentDate.substr(0, 10))}
+                    &nbsp;le&nbsp;{nrDateFormat(commentDate.substr(0, 10))}
                 </span>
                 <span className={`${styles.netreviews_answer}`}>{comment}</span>
             </div>
