@@ -115,7 +115,7 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({stats, filterByRatin
                         <span className={`${styles.extra_margin}`}>
                             <FormattedMessage id="store/netreviews.control"/>
                         </span>
-                            <FaInfoCircle onClick={toggleInfo}/>
+                            <FaInfoCircle style={{cursor: 'pointer'}} onClick={toggleInfo}/>
                             {showInfo ? <div><NetreviewsInfo onClick={toggleInfo}/></div> : null}
                         </div>
                     </div>

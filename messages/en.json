@@ -1,5 +1,5 @@
 {
-  "store/netreviews.moderation.answer-from": "Resposta de ",
+  "store/netreviews.moderation.answer-from": "Reply from ",
   "store/netreviews.moderation.show-chat": "Show conversation",
   "store/netreviews.moderation.hide-chat": "Hide conversation",
   "store/netreviews.was-helpful": "Was this review helpful?",
@@ -13,7 +13,7 @@
   "store/netreviews.filter.most-helpful": "Most helpful",
   "store/netreviews.filter.date-desc": "Most recent",
   "store/netreviews.filter.filter": "Filter reviews by",
-  "store/netreviews.reset-filter": "Resetar filtro",
+  "store/netreviews.reset-filter": "Reset filter",
   "store/netreviews.info.one": "For further information on the nature of the review controls, as well as the possibility of contacting the author of the review please consult our ",
   "store/netreviews.info.two": "No inducements have been provided for these reviews.",
   "store/netreviews.info.three": "Reviews are published and kept for a period of five years.",
