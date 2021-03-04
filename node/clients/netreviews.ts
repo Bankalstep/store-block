@@ -23,8 +23,6 @@ class Netreviews extends ExternalClient {
 
     constructor(context: IOContext, options?: InstanceOptions) {
         super('https://awsapis3.netreviews.eu', context, options);
-        console.log(context);
-        console.log(context.account);
     }
 
     public async getAccountInfo(ctx: Context) {
@@ -32,12 +30,10 @@ class Netreviews extends ExternalClient {
         const appId = process.env.VTEX_APP_ID;
         const settings = await clients.apps.getAppSettings(appId);
         const {idWebsite, locale} = settings;
-        console.log(locale);
 
         if (this.idWebsite === '') {
             this.idWebsite = idWebsite.trim();
-            this.plateforme = 'fr';
-            // this.plateforme = locale.split('-')[1].toLowerCase();
+            this.plateforme = locale.split('-')[1].toLowerCase();
         }
     }
 

@@ -5,10 +5,8 @@ export const queries = {
 
         try {
             const data = await netreviews.getRating(ctx, product);
-            console.log(data);
             return data[Object.keys(data)[0]];
         } catch (error) {
-            console.log(error);
             throw new TypeError(error);
         }
     },
@@ -17,9 +15,7 @@ export const queries = {
         const {product, offset, limit, filter, order} = args;
 
         try {
-            const data = await netreviews.getReviews(ctx, {product, offset, limit, filter, order});
-            // console.log(data);
-            return data;
+            return await netreviews.getReviews(ctx, {product, offset, limit, filter, order});
         } catch (error) {
             throw new TypeError(error);
         }

@@ -21,7 +21,7 @@ const HelpfulBlock: FunctionComponent<HelpfulProps> = ({
                                                        }) => {
     return (
         <div className={`${styles.helpful_block}`}>
-            <span>Cet avis vous a-t-il été utile ?</span>
+            <span><FormattedMessage id="store/netreviews.was-helpful"/></span>
             <a className={`${styles.button_helpful}`}
                data-review-id={reviews_id + '_1'}
                data-vote={count_helpful_yes}
@@ -29,7 +29,7 @@ const HelpfulBlock: FunctionComponent<HelpfulProps> = ({
                data-id={id}
             >
 
-                <FormattedMessage id="yes"/>
+                <FormattedMessage id="store/netreviews.yes"/>
                 <span>{count_helpful_yes}</span>
             </a>
             <a className={`${styles.button_helpful}`}
@@ -38,7 +38,7 @@ const HelpfulBlock: FunctionComponent<HelpfulProps> = ({
                data-sign={sign}
                data-id={id}
             >
-                <FormattedMessage id="no"/>
+                <FormattedMessage id="store/netreviews.no"/>
                 <span>{count_helpful_no}</span>
             </a>
         </div>

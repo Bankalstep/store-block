@@ -1,3 +1,6 @@
-# Store Block course template
+# Netreviews Vtex Module
 
-Here you'll learn how to create awesome Store Framework blocks!
+1 - How to install the module
+
+
+2 - How to configure the module

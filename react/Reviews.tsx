@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect, useState} from "react";
+import React, {CSSProperties, FunctionComponent, useEffect, useState} from "react";
 import {useQuery} from "react-apollo";
 import GetReviews from "./graphql/getReviews.gql";
 import "@fontsource/nunito";
@@ -34,9 +34,11 @@ const Reviews: FunctionComponent = () => {
     });
 
     useEffect(() => {
-        if (!loading && !error && data.reviews.length) {
-            setReviews(data.reviews[0].reviews);
-            setStats(data.reviews[0].stats)
+        if (!loading && !error && data.reviews !== null) {
+            if (data.reviews.length) {
+                setReviews(data.reviews[0].reviews);
+                setStats(data.reviews[0].stats)
+            }
         }
     }, [data]);
 
@@ -60,21 +62,26 @@ const Reviews: FunctionComponent = () => {
         setOrder(event.target.value);
     }
 
-    return (
-        <div>
-            <div id="netreviews_block" className={`${styles.netreviews_review_rate_and_stars}`}>
-                <ReviewsSideInfo stats={stats} filterByRating={filterByRating} filter={filter} setFilterClicked={setFilterClicked}/>
-                <ReviewsContainer reviews={reviews}
-                                  limit={{limit, initialLimit}}
-                                  filter={filter}
-                                  filterByOrder={filterByOrder}
-                                  order={selectedOrder}
-                                  getMoreReviews={moreReviews}
-                                  stats={stats}
-                                  loading={loading}
-                />
-            </div>
+    const style: CSSProperties = {
+        position: 'absolute',
+        top: '-100px',
+        left: 0
+    }
+    return data ? (
+        <div className={`${styles.netreviews_review_rate_and_stars}`}>
+            <div id="netreviews_block" style={style}/>
+            <ReviewsSideInfo stats={stats} filterByRating={filterByRating} filter={filter}
+                             setFilterClicked={setFilterClicked}/>
+            <ReviewsContainer reviews={reviews}
+                              limit={{limit, initialLimit}}
+                              filter={filter}
+                              filterByOrder={filterByOrder}
+                              order={selectedOrder}
+                              getMoreReviews={moreReviews}
+                              stats={stats}
+                              loading={loading}
+            />
         </div>
-    )
+    ) : <div/>;
 };
 export default Reviews;

@@ -13,26 +13,26 @@ interface DropdownProps {
 const messages = defineMessages({
     oldest: {
         defaultMessage: '',
-        id: 'filter.date-asc',
+        id: 'store/netreviews.filter.date-asc',
     },
     highest: {
         defaultMessage: '',
-        id: 'filter.rate-desc',
+        id: 'store/netreviews.filter.rate-desc',
     },
     lowest: {
         defaultMessage: '',
-        id: 'filter.rate-asc',
+        id: 'store/netreviews.filter.rate-asc',
     },
     most_useful: {
         defaultMessage: '',
-        id: 'filter.most-helpful',
+        id: 'store/netreviews.filter.most-helpful',
     },
     default: {
         defaultMessage: '',
-        id: 'filter.date-desc',
+        id: 'store/netreviews.filter.date-desc',
     },
     filter: {
-        id: 'filter.filter'
+        id: 'store/netreviews.filter.filter'
     }
 });
 

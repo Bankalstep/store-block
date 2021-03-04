@@ -7,11 +7,6 @@ interface Carousel {
 }
 
 const Carousel: FunctionComponent<Carousel> = ({onClick}) => {
-
-    useEffect(() => {
-        console.log('action going in CAROUSEL');
-    });
-
     return (
         <div id={`${styles.netreviews_media_modal}`}>
             <span className={`${styles.close_carousel}`} onClick={onClick[0]}><IoClose/></span>

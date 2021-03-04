@@ -38,8 +38,9 @@ const ModerationContainerBlock: FunctionComponent<ModerationContainer> = ({moder
                     />)
             })}
             <button className={`${styles.show_chat}`} onClick={toggleChat}><FaComments
-                className={`${styles.chat_icon}`}/><FormattedMessage
-                id="moderation.show-chat"/></button>
+                className={`${styles.chat_icon}`}/>
+                {isVisible ? <FormattedMessage id="store/netreviews/moderation.hide-chat"/> :
+                    <FormattedMessage id="store/netreviews/moderation.show-chat"/>}</button>
         </Fragment>
     )
 }

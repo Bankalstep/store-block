@@ -9,18 +9,17 @@ import useProduct from "vtex.product-context/useProduct";
 
 const Rating: FunctionComponent = () => {
     const product = useProduct().product.productId;
-    let variables = {
-        product: product
-    }
     const {data, loading, error} = useQuery(GetAverage, {
         ssr: false,
-        variables: variables
+        variables: {
+            product: product
+        }
     });
 
     const executeScroll = (element: HTMLElement | null): any => {
         console.log(element);
         if (element) {
-            element.scrollIntoView();
+            element.scrollIntoView({behavior: 'smooth', block: 'start'});
         }
     };
 
@@ -28,7 +27,7 @@ const Rating: FunctionComponent = () => {
         return <div className={`${styles.loader}`}/>;
     }
 
-    if (!loading && !error && data.rating.length) {
+    if (!loading && !error && data.rating !== null) {
         const count = data.rating[0].count;
         const rate = data.rating[0].rate;
 

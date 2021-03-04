@@ -21,8 +21,8 @@ const ReviewsContainer: FunctionComponent<ReviewsContainerProps> = ({
                                                                     }) => {
     const total: number = getTotal(stats, filter);
     const reviewsNode = useRef(null);
-
     let reviewsCount = 0;
+
     reviewsCount += limit.limit;
 
     return (
@@ -71,7 +71,7 @@ const ReviewsContainer: FunctionComponent<ReviewsContainerProps> = ({
             {total > reviewsCount ?
                 <button className={`${styles.load_more_button}`}
                         onClick={() => getMoreReviews(limit.initialLimit)}>
-                    <FormattedMessage id="load-more"/><FaAngleDown className={`${styles.arrow_down_button}`}/>
+                    <FormattedMessage id="store/netreviews.load-more"/><FaAngleDown className={`${styles.arrow_down_button}`}/>
                 </button> : ''}
         </div>
     )

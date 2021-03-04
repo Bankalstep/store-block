@@ -1,8 +1,9 @@
 .netreviews_review_rate_and_stars {
     font-family: Nunito, Roboto, sans-serif;
     display: flex;
+    position: relative;
     padding: 0;
-    margin: 0 50px;
+    margin: 0 45px;
 }
 
 .netreviews_review_stars {
@@ -38,7 +39,7 @@
     display: flex;
     flex-direction: column;
     flex: 0 1 100%;
-    margin-left: 20px;
+    margin-left: 24px;
 }
 
 .dropdown_override {
@@ -63,7 +64,8 @@
 
 .separator {
     font-size: 26px;
-    margin: 0 10px;
+    line-height: 0px;
+    margin: 0 10px 4px;
 }
 
 .extra_margin {
@@ -105,6 +107,7 @@
 .user_count {
     display: flex;
     justify-content: center;
+    margin: 15px auto;
 }
 
 .netreviews_afnor {
@@ -119,7 +122,9 @@
 }
 
 .load_more_button {
+    display: flex;
     align-self: start;
+    align-items: center;
     background: none;
     margin-top: 10px;
     padding: 0;
@@ -200,8 +205,8 @@
 }
 
 .rating_block {
-    display: flex;
-    flex: 1 0 90px;
+    display: inline-flex;
+    flex: 1 1 auto;
     justify-content: center;
     align-items: center;
     font-size: 30px;
@@ -220,9 +225,14 @@
     margin-bottom: 15px;
 }
 
+.sidegroup_1 {
+
+}
+
 .stats_block {
+    display: flex;
+    flex-direction: column;
     background-color: #f2f2f2;
-    display: block;
     padding: 20px;
 }
 
@@ -263,7 +273,7 @@
 
 .netreviews_answer {
     display: block;
-    margin: 2px 0;
+    margin-top: 4px;
 }
 
 .netreviews_media_part {
@@ -357,10 +367,12 @@
 }
 
 .netreviews_website_answer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
     padding: 10px 10px 10px 10px;
     background-color: #f4f4f4;
     width: 75%;
-    display: block;
     font-size: 12px;
     border-left: #f2f2f2 solid 3px;
     height: auto;
@@ -423,6 +435,10 @@
     line-height: 18px;
 }
 
+.sidegroup_2 {
+    margin-bottom: 15px;
+}
+
 /*loader*/
 .loader {
     display: flex;
@@ -456,3 +472,106 @@
         transform: rotate(360deg);
     }
 }
+
+/* Responsive */
+
+@media screen and (max-width: 670px) {
+    .netreviews_review_rate_and_stars {
+        flex-direction: column;
+        margin: 0 15px;
+    }
+
+    .right_block {
+        margin: 0 2px;
+    }
+
+    .sidegroup_1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .sidegroup_2 {
+        margin: 0;
+    }
+
+    .top_block {
+        flex-basis: 50%;
+    }
+
+    .stats {
+        flex-basis: 50%;
+    }
+
+    .bottom_margin {
+        margin: 18px 22px;
+    }
+
+    .netreviews_afnor {
+        display: grid;
+        margin-top: 30px;
+    }
+
+    .dropdown_override {
+        justify-content: center;
+        margin-top: 13px;
+    }
+
+    .rating {
+        font-size: 45px;
+    }
+
+    .rating_block {
+        font-size: 35px;
+    }
+
+}
+
+@media screen and (max-width: 360px) {
+    .netreviews_review_rate_and_stars {
+        margin: 0 20px;
+    }
+
+    .netreviews_logo {
+        width: 100%;
+    }
+
+    .netreviews_informations {
+        width: auto;
+    }
+
+    .dropdown_override {
+        flex-direction: column;
+    }
+
+    .sidegroup_1 {
+        flex-direction: column;
+        align-items: inherit;
+    }
+
+    .sidegroup_2 {
+        display: inline-flex;
+    }
+
+    .rating {
+        font-size: 30px;
+    }
+
+    .separator {
+        font-size: 10px;
+        margin: 0 5px;
+    }
+
+    .bottom_margin {
+        margin: 0;
+    }
+
+    .rating_block {
+        font-size: 15px;
+    }
+
+    .top_block {
+        font-size: 12px;
+    }
+}
+

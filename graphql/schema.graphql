@@ -1,13 +1,6 @@
 type Query {
-    account: NetreviewsAccount
     rating(product: String): [NetreviewsRating]
     reviews(product: String, idWebsite: String, plateforme: String, offset: Int, limit: Int, filter: [Int], order: String) : [NetreviewsReviews]
-}
-
-type NetreviewsAccount {
-    idWebsite: String
-    secretKey: String
-    plateforme: String
 }
 
 type NetreviewsRating {

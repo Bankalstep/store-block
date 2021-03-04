@@ -4,12 +4,11 @@
   "version": "0.0.1",
   "title": "Netreviews Module",
   "description": "Netreviews VTEX module",
-  "defaultLocale": "fr-FR",
+  "defaultLocale": "en-US",
   "builders": {
     "messages": "1.x",
     "store": "0.x",
     "react": "3.x",
-    "admin": "0.x",
     "node": "6.x",
     "graphql": "1.x"
   },
@@ -59,7 +58,8 @@
           "es-CL",
           "es-ES",
           "pt-PT",
-          "en-US"
+          "en-US",
+          "fr-FR"
         ],
         "default": "es-BR",
         "title": "Country",
@@ -69,7 +69,6 @@
   },
   "dependencies": {
     "vtex.styleguide": "9.x",
-    "vtex.css-handles": "0.x",
     "vtex.product-context": "0.x"
   },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"

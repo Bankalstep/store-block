@@ -6,6 +6,7 @@ import HelpfulBlock from "./Helpful";
 import ModerationContainerBlock from "./ModerationContainer";
 import nrDateFormat from "../utils/DateConverter"
 import MediaContainer from "./MediaContainer";
+import {FormattedMessage} from "react-intl";
 
 
 const Review: FunctionComponent<ReviewProps> = ({...reviewsProps}) => {
@@ -23,8 +24,10 @@ const Review: FunctionComponent<ReviewProps> = ({...reviewsProps}) => {
             {reviewsProps.medias ? <MediaContainer medias={mediaArray}/> : ''}
 
             <div className={`${styles.netreviews_customer_name}`}>{reviewsProps.firstname} {reviewsProps.lastname}.
-                <span> publié le {nrDateFormat(reviewsProps.publish_date.substr(0, 10))}</span>
-                <span> suite à une commande du {nrDateFormat(reviewsProps.order_date.substr(0, 10))}</span>
+                <span><FormattedMessage
+                    id="store/netreviews.published.on"/>{nrDateFormat(reviewsProps.publish_date.substr(0, 10))}</span>
+                <span><FormattedMessage
+                    id="store/netreviews.following"/>{nrDateFormat(reviewsProps.order_date.substr(0, 10))}</span>
             </div>
 
             {reviewsProps.moderation ?

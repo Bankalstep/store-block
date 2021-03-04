@@ -9,7 +9,7 @@ const NoReview: FunctionComponent<NoReviewProps> = ({}) => {
 
     return (
         <div className={`${styles.no_review}`}>
-            <FormattedMessage id="noreviews"/>
+            <FormattedMessage id="store/netreviews.noreviews"/>
         </div>
     )
 }
