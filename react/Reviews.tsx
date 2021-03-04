@@ -44,8 +44,6 @@ const Reviews: FunctionComponent = () => {
 
     function moreReviews(increment: number) {
         setLimit((limit) => {
-            console.log(limit);
-            console.log(increment);
             return limit + increment
         });
     }

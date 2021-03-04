@@ -21,7 +21,7 @@ const ModerationBlock: FunctionComponent<Moderation> = ({commentDate, commentOri
         })
 
         let origin = useIntl().formatMessage(msg);
-        console.log(origin);
+
         if (param == 2) {
             origin = document.domain;
         } else {

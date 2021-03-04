@@ -102,7 +102,7 @@ const ReviewsSideInfo: FunctionComponent<SideInfoProps> = ({stats, filterByRatin
                                     filterByRating([]);
                                     setFilterClicked(false);
                                 }}>
-                            <FormattedMessage id="reset-filter"/><TiDelete className={`${styles.custom_cross}`}/>
+                            <FormattedMessage id="store/netreviews.reset-filter"/><TiDelete className={`${styles.custom_cross}`}/>
                         </button>
                         : ''}
 

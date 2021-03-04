@@ -17,7 +17,6 @@ const Rating: FunctionComponent = () => {
     });
 
     const executeScroll = (element: HTMLElement | null): any => {
-        console.log(element);
         if (element) {
             element.scrollIntoView({behavior: 'smooth', block: 'start'});
         }
