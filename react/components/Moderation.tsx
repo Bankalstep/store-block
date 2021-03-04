@@ -35,10 +35,10 @@ const ModerationBlock: FunctionComponent<Moderation> = ({commentDate, commentOri
              className={`${styles.netreviews_discussion}`}>
             <div className={`${styles.netreviews_website_answer}`}>
                 <span className={`${styles.netreviews_answer_title}`}>
-                    <FormattedMessage id="store/netreviews/moderation.answer-from"/>
+                    <FormattedMessage id="store/netreviews.moderation.answer-from"/>
                     {getOrigin(commentOrigin)}
                     &nbsp;
-                    <FormattedMessage id="store/netreviews/moderation.on"/>
+                    <FormattedMessage id="store/netreviews.moderation.on"/>
                     &nbsp;
                     {nrDateFormat(commentDate.substr(0, 10))}
                 </span>

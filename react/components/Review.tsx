@@ -34,12 +34,12 @@ const Review: FunctionComponent<ReviewProps> = ({...reviewsProps}) => {
                 <ModerationContainerBlock moderation={reviewsProps.moderation}
                                           commentUsername={reviewsProps.firstname + ' ' + reviewsProps.lastname}/> : ''}
 
-            <HelpfulBlock count_helpful_no={reviewsProps.count_helpful_no}
-                          count_helpful_yes={reviewsProps.count_helpful_yes}
-                          id={reviewsProps.id_product}
-                          reviews_id={reviewsProps.review_id}
-                          sign={reviewsProps.sign_helpful}
-            />
+            {/*<HelpfulBlock count_helpful_no={reviewsProps.count_helpful_no}*/}
+            {/*              count_helpful_yes={reviewsProps.count_helpful_yes}*/}
+            {/*              id={reviewsProps.id_product}*/}
+            {/*              reviews_id={reviewsProps.review_id}*/}
+            {/*              sign={reviewsProps.sign_helpful}*/}
+            {/*/>*/}
         </div>
     )
 }
